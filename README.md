@@ -24,3 +24,14 @@ Goal:
 
 Done when:
 - first monster is born on the screen
+
+### 0.0.3 — “Input system”
+
+Goal:
+- buttons are buttoning
+
+Hardware:
+- 3 buttons wired
+
+Done when:
+- press button → state changes in serial/log
