@@ -1,51 +1,155 @@
 # Monbit
+
 A tiny ESP32-based digital monster pet with an e-ink display that evolves over time based on care, sleep cycles, and randomness.
 
+---
 
-## Monbit roadmap
+# Roadmap
 
-### 0.0.1 — “Hello hardware”
+## 0.0.1 — Hello Hardware
 
-Goal:
-- ESP32 boots - serial prints works
-- Display works and shows something
-- You can charge the battery and device can work without direct power input
+### Goal
 
+* ESP32 boots
+* Serial prints work
+* Display shows something
+* Battery powers device
+* Device can charge via USB-C
 
-Hardware:
-- ESP32 C3 Development Board Module - Wifi BT
-- WeAct 1.54 Inch Epaper Module SPI Black-White
-- LiPol Battery 503035 500mAh 3.7V JST-PH 2.0
-- USB C 5V 1A 18650 TP4056 Lithium Battery Charger Module
+### Hardware
 
-Done when:
-- you can upload code and display something
+* ESP32-C3 Development Board (WiFi + Bluetooth)
+* WeAct 1.54" E-Paper Module (SPI, Black/White)
+* Li-Po Battery 503035 500mAh 3.7V JST-PH 2.0
+* USB-C TP4056 Lithium Battery Charger Module
 
+### Done When
 
-### 0.0.2 — “Input system”
+* Code uploads successfully
+* Serial output works
+* Display shows text or image
+* Device runs from battery
 
-Goal:
--  Wiring buttons
--  Wiring on-off switch
+---
 
-Hardware:
-- SKRGAED010 ALPS Tact Switch 6*6*5 
+## 0.0.2 — Input System
 
-Done when:
-- buttons are buttoning (at least logging)
-- switch is switching on/off
+### Goal
 
-### 0.0.3 — “Memory system + sound”
+* Wire buttons
+* Wire power switch
+* Detect button presses
 
-Goal:
-- save/load current state
-- play a sound
+### Hardware
 
-Hardware:
-- MAX98357A Audio Amplifier Module
-- 15X3.5MM Mini Round Speaker 8 Ohm 0.5W
+* SKRGAED010 ALPS Tact Switch (or similar)
 
-Done when:
-- sound is sounding
-- save/load is saving and loading
+### Done When
 
+* Buttons log presses
+* Switch turns device on/off
+
+---
+
+## 0.0.3 — Memory System
+
+### Goal
+
+* Save current state
+* Load saved state
+
+### Done When
+
+* Restart device
+* State persists
+
+Example:
+
+* Hunger
+* Happiness
+* Energy
+
+---
+
+## 0.0.4 — Sound System
+
+### Goal
+
+* Play simple sounds
+* Confirm actions with sound
+
+### Hardware
+
+* MAX98357A Audio Amplifier Module
+* 15x3.5mm Mini Round Speaker 8Ω 0.5W
+
+### Done When
+
+* Device plays beep sound
+* Sound triggered by button press
+
+---
+
+## 0.0.5 — Power Optimization
+
+### Goal
+
+* Deep sleep support
+* Wake on button press
+* Battery optimization
+
+### Done When
+
+* Device sleeps automatically
+* Button wakes device
+
+---
+
+## 0.0.6 — First Monster Logic
+
+### Goal
+
+* Basic monster stats
+* Simple interactions
+
+Example Stats
+
+* Hunger
+* Happiness
+* Energy
+
+### Done When
+
+* Buttons modify stats
+* Display updates values
+
+---
+
+## 0.0.7 — UI Improvements
+
+### Goal
+
+* Basic UI layout
+* Icons and sprites
+* Monster display
+
+### Done When
+
+* UI readable
+* Monster visible
+
+---
+
+## 0.1.0 — First Prototype
+
+### Goal
+
+* Fully assembled device
+* 3D printed enclosure
+* Stable hardware
+
+### Done When
+
+* Portable device
+* Battery powered
+* Fully functional
