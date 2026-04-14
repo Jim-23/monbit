@@ -47,5 +47,5 @@ Hardware:
 
 Done when:
 - sound is sounding
-- save/load is
+- save/load is saving and loading
 
