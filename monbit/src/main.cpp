@@ -2,17 +2,14 @@
 
 void setup()
 {
-    //pinMode(8, OUTPUT); // blue led
     Serial.begin(115200);
+    delay(2000);
 
-    delay(1000);
-
-    Serial.println();
-    Serial.println("=== MONBIT BOOT ===");
+    Serial.println("=== MONBIT BOOTS ===");
 }
 
 void loop()
 {
-    Serial.println("Alive");
+    Serial.println("ALIVE");
     delay(1000);
 }
