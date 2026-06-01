@@ -13,22 +13,17 @@ A tiny ESP32-based digital monster pet with an e-ink display that evolves over t
 * ESP32 boots
 * Serial prints work
 * Display shows something
-* Battery powers device
-* Device can charge via USB-C
 
 ### Hardware
 
 * ESP32-C3 Development Board (WiFi + Bluetooth)
 * WeAct 1.54" E-Paper Module (SPI, Black/White)
-* Li-Po Battery 503035 500mAh 3.7V JST-PH 2.0
-* USB-C TP4056 Lithium Battery Charger Module
 
 ### Done When
 
 * Code uploads successfully
 * Serial output works
 * Display shows text or image
-* Device runs from battery
 
 ---
 
@@ -90,13 +85,19 @@ Example:
 
 ---
 
-## 0.0.5 — Power Optimization
+## 0.0.5 — Battery + Power Optimization 
 
 ### Goal
 
 * Deep sleep support
 * Wake on button press
+* Battery powers device
+* Device can charge via USB-C
 * Battery optimization
+
+### Hardware
+* Li-Po Battery 503035 500mAh 3.7V JST-PH 2.0
+* USB-C TP4056 Lithium Battery Charger Module
 
 ### Done When
 
