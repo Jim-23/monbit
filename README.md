@@ -4,6 +4,18 @@ A tiny ESP32-based digital monster pet with an e-ink display that evolves over t
 
 ---
 
+# Wiring
+| WeAct E-Ink | ESP32-C3 |
+| ----------- | -------- |
+| VCC         | 3.3V     |
+| GND         | GND      |
+| SDA         | GPIO7    |
+| SCL         | GPIO6    |
+| CS          | GPIO10   |
+| DC          | GPIO9    |
+| RES         | GPIO8    |
+| BUSY        | GPIO5    |
+
 # Roadmap
 
 ## 0.0.1 — Hello Hardware
