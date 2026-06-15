@@ -17,13 +17,21 @@ namespace ui
     constexpr int HEADER_Y = 20;
     constexpr int VERSION_Y = 40;
 
-    constexpr int MONSTER_X = 80;
+    constexpr int MONSTER_X = 65;
     constexpr int MONSTER_Y = 90;
 
     constexpr int STATS_X = MARGIN;
-    constexpr int HUNGER_Y = 140;
-    constexpr int ENERGY_Y = 160;
-}
+    constexpr int HUNGER_Y = 160;
+    constexpr int ENERGY_Y = 180;
+
+    constexpr int STAT_X_SECOND_COLUMN = 140;
+    constexpr int HAPPINESS_Y = 160;
+    constexpr int AGE_Y = 180;
+
+    constexpr int FOOTER_Y = 195;
+    constexpr int FOOTER_LEFT = 30;
+    constexpr int FOOTER_MIDDLE = 100;
+    constexpr int FOOTER_RIGHT = 160;
 
     constexpr char VERSION[] = "v0.0.1";
 }
@@ -33,42 +41,47 @@ void draw_header()
     display.setFont(&FreeMonoBold9pt7b);
     display.setTextColor(GxEPD_BLACK);
     display.setCursor(ui::MARGIN, ui::HEADER_Y);
-    display.print("MONBIT");
+    display.printf("MONBIT %s", ui::VERSION);
 }
 
 void draw_monster()
 {
-    display.setCursor(MONSTER_X, MONSTER_Y);
-    display.print("(o_o)");
+    display.setCursor(ui::MONSTER_X, ui::MONSTER_Y);
+    display.print("<(o_o)>");
 }
 
 void draw_stats(const Monster& monster)
 {
-    display.setCursor(STATS_X, HUNGER_Y);
+    display.setCursor(ui::STATS_X, ui::HUNGER_Y);
     display.printf("H:%d", monster.hunger);
 
-    display.setCursor(STATS_X, ENERGY_Y);
+    display.setCursor(ui::STATS_X, ui::ENERGY_Y);
     display.printf("E:%d", monster.energy);
-}
 
+    display.setCursor(ui::STAT_X_SECOND_COLUMN, ui::HAPPINESS_Y);
+    display.printf("H:%d", monster.happiness);
 
-void draw_version()
-{
-    display.setCursor(ui::MARGIN, ui::VERSION_Y);
-    display.print(ui::VERSION);
+    display.setCursor(ui::STAT_X_SECOND_COLUMN, ui::AGE_Y);
+    display.printf("A:%d", monster.age);
 }
 
 void draw_footer()
 {
+    display.setCursor(ui::FOOTER_LEFT, ui::FOOTER_Y);
+    display.printf("<");
+
+    display.fillRect(ui::FOOTER_MIDDLE, ui::FOOTER_Y - 8, 8, 8, GxEPD_BLACK);
+
+    display.setCursor(ui::FOOTER_RIGHT, ui::FOOTER_Y);
+    display.printf(">");
 }
 
-void draw_screen()
+void draw_screen(const Monster& monster)
 {
     display.fillScreen(GxEPD_WHITE);
 
     draw_header();
     draw_monster();
-    draw_stats();
+    draw_stats(monster);
     draw_footer();
-    draw_version();
 }
