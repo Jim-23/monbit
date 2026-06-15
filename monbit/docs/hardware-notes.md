@@ -14,7 +14,7 @@ Works on macOS with data-capable USB-C cable
 ## Display
 
 Display:
-WeAct 1.54"
+WeAct 1.54" E-Paper
 
 Pins:
 
@@ -32,3 +32,11 @@ PlatformIO:
 build_flags =
     -DARDUINO_USB_MODE=1
     -DARDUINO_USB_CDC_ON_BOOT=1
+
+Driver:
+
+GxEPD2_154_GDEY0154D67
+
+SPI:
+
+SPI.begin(6, -1, 7, 5);
