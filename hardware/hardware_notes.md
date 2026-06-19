@@ -16,16 +16,19 @@ Works on macOS with data-capable USB-C cable
 Display:
 WeAct 1.54" E-Paper
 
-Pins:
+### Display Wiring to ESP
 
-VCC -> 3.3V
-GND -> GND
-SDA -> GPIO7
-SCL -> GPIO6
-CS -> GPIO5
-D/C -> GPIO4
-RES -> GPIO3
-BUSY -> GPIO2
+| WeAct E-Ink | ESP32-C3 |
+|------------|----------|
+| VCC        | 3.3V     |
+| GND        | GND      |
+| SDA        | GPIO7    |
+| SCL        | GPIO6    |
+| CS         | GPIO10   |
+| DC          | GPIO9    |
+| RES        | GPIO8    |
+| BUSY       | GPIO5    |
+
 
 PlatformIO:
 

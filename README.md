@@ -2,167 +2,101 @@
 
 A tiny ESP32-based digital monster pet with an e-ink display that evolves over time based on care, sleep cycles, and randomness.
 
+## Motivation
+
+Monbit is a personal project created to learn embedded development, hardware prototyping, and product design.
+
+The goal is not only to create a device, but also to explore the full product development process. From firmware and electronics to CAD design and physical prototype.
+
+I want to document the entire journey, sharing both successes and failures, to create a resource for others interested in similar projects.
+
 ---
 
-# Wiring
-| WeAct E-Ink | ESP32-C3 |
-| ----------- | -------- |
-| VCC         | 3.3V     |
-| GND         | GND      |
-| SDA         | GPIO7    |
-| SCL         | GPIO6    |
-| CS          | GPIO10   |
-| DC          | GPIO9    |
-| RES         | GPIO8    |
-| BUSY        | GPIO5    |
+### Documentation
 
-# Roadmap
+- [Roadmap](./ROADMAP.md)
+- [Development Log](./DEVLOG.md)
+- [Hardware Notes](./hardware/hw-notes.md)
+- [Game Design](./docs/game_design.md)
+- [UI Design](./docs/ui_design.md)
 
-## 0.0.1 — Hello Hardware
+## Current Progress
 
-### Goal
+Current Version: `v0.0.1`
 
-* ESP32 boots
-* Serial prints work
-* Display shows something
+### Firmware
+- [x] ESP32 bring-up
+- [x] E-Ink display communication
+- [ ] Button input system
+- [ ] Sound output
+- [ ] Persistent storage
 
 ### Hardware
+- [x] Components selected
+- [x] Display wired
+- [x] First enclosure prototype designed
+- [ ] Battery integration
+- [ ] Button wiring
+- [ ] Final enclosure prototype
+  
 
-* ESP32-C3 Development Board (WiFi + Bluetooth)
-* WeAct 1.54" E-Paper Module (SPI, Black/White)
 
-### Done When
+## Milestones
 
-* Code uploads successfully
-* Serial output works
-* Display shows text or image
+### v0.0.1 — Hello Hardware ✅
 
----
+Completed:
 
-## 0.0.2 — Input System
+- ESP32-C3 configured with PlatformIO
+- USB serial debugging enabled
+- E-Ink display connected and initialized
+- First successful display render (`MONBIT v0.0.1`)
 
-### Goal
 
-* Wire buttons
-* Wire power switch
-* Detect button presses
+## Hardware
 
-### Hardware
+Core components:
 
-* SKRGAED010 ALPS Tact Switch (or similar)
+- ESP32-C3 SuperMini
+- WeAct 1.54" E-Ink Display
+- 500mAh LiPo Battery
+- TP4056 USB-C Charging Module
 
-### Done When
+Planned components:
 
-* Buttons log presses
-* Switch turns device on/off
+- Tactile Buttons
+- MAX98357A Audio Amplifier
+- Mini Speaker
+- MPU6050 Accelerometer
 
----
 
-## 0.0.3 — Memory System
+## Software
 
-### Goal
+Development environment:
 
-* Save current state
-* Load saved state
+- C++
+- Arduino Framework
+- PlatformIO
+- Visual Studio Code
 
-### Done When
+Libraries:
 
-* Restart device
-* State persists
+- GxEPD2
 
-Example:
 
-* Hunger
-* Happiness
-* Energy
+## Repository Structure
 
----
-
-## 0.0.4 — Sound System
-
-### Goal
-
-* Play simple sounds
-* Confirm actions with sound
-
-### Hardware
-
-* MAX98357A Audio Amplifier Module
-* 15x3.5mm Mini Round Speaker 8Ω 0.5W
-
-### Done When
-
-* Device plays beep sound
-* Sound triggered by button press
+```
+monbit/
+├── firmware/     # ESP32 firmware
+├── hardware/     # CAD files, photos, wiring
+├── docs/         # Design notes
+├── DEVLOG.md
+├── ROADMAP.md
+└── README.md
+```
 
 ---
 
-## 0.0.5 — Battery + Power Optimization 
 
-### Goal
 
-* Deep sleep support
-* Wake on button press
-* Battery powers device
-* Device can charge via USB-C
-* Battery optimization
-
-### Hardware
-* Li-Po Battery 503035 500mAh 3.7V JST-PH 2.0
-* USB-C TP4056 Lithium Battery Charger Module
-
-### Done When
-
-* Device sleeps automatically
-* Button wakes device
-
----
-
-## 0.0.6 — First Monster Logic
-
-### Goal
-
-* Basic monster stats
-* Simple interactions
-
-Example Stats
-
-* Hunger
-* Happiness
-* Energy
-
-### Done When
-
-* Buttons modify stats
-* Display updates values
-
----
-
-## 0.0.7 — UI Improvements
-
-### Goal
-
-* Basic UI layout
-* Icons and sprites
-* Monster display
-
-### Done When
-
-* UI readable
-* Monster visible
-
----
-
-## 0.1.0 — First Prototype
-
-### Goal
-
-* Fully assembled device
-* 3D printed enclosure
-* Stable hardware
-
-### Done When
-
-* Portable device
-* Battery powered
-* Fully functional
