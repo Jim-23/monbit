@@ -24,10 +24,10 @@ WeAct 1.54" E-Paper
 | GND        | GND      |
 | SDA        | GPIO7    |
 | SCL        | GPIO6    |
-| CS         | GPIO10   |
-| DC          | GPIO9    |
-| RES        | GPIO8    |
-| BUSY       | GPIO5    |
+| CS         | GPIO5   |
+| DC          | GPIO4    |
+| RES        | GPIO3    |
+| BUSY       | GPIO2    |
 
 
 PlatformIO:
@@ -43,10 +43,3 @@ GxEPD2_154_GDEY0154D67
 SPI:
 
 SPI.begin(6, -1, 7, 5);
-
-
-
-
-
-
-

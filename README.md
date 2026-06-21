@@ -2,6 +2,10 @@
 
 A tiny ESP32-based digital monster pet with an e-ink display that evolves over time based on care, sleep cycles, and randomness.
 
+<p align="center">
+  <img src="photos/4th_fron_panel-front.jpg" alt="Monbit front panel" width="420">
+</p>
+
 ## Motivation
 
 Monbit is a personal project created to learn embedded development, hardware prototyping, and product design.
@@ -34,7 +38,7 @@ Current Version: `v0.0.1`
 ### Hardware
 - [x] Components selected
 - [x] Display wired
-- [x] First enclosure prototype designed
+- [x] First enclosure prototype designed - front lid
 - [ ] Battery integration
 - [ ] Button wiring
 - [ ] Final enclosure prototype
@@ -43,7 +47,7 @@ Current Version: `v0.0.1`
 
 ## Milestones
 
-### v0.0.1 — Hello Hardware ✅
+### v0.0.1 — Hello Hardware
 
 Completed:
 
@@ -84,15 +88,41 @@ Libraries:
 - GxEPD2
 
 
+## Gallery
+
+<p align="center">
+  <img src="photos/display-esp-wiring.jpg" alt="ESP32 to e-ink display wiring" width="320">
+  <img src="photos/firstUI.jpg" alt="First UI rendered on the e-ink display" width="320">
+</p>
+<p align="center">
+  <img src="photos/4th_fron_panel-front.jpg" alt="Front panel - front" width="320">
+  <img src="photos/4th_front_panel-back.jpg" alt="Front panel - back" width="320">
+</p>
+
+<!-- TODO: Add beauty shots once IMG_5243/5245/5247/5249/5251.HEIC are converted to .jpg/.png -->
+
+
 ## Repository Structure
 
 ```
 monbit/
-├── firmware/     # ESP32 firmware
-├── hardware/     # CAD files, photos, wiring
+├── firmware/     # ESP32 firmware (PlatformIO)
+│   ├── include/
+│   ├── lib/
+│   ├── src/
+│   ├── test/
+│   └── platformio.ini
+├── hardware/     # Hardware notes & measurements
+│   ├── hardware_notes.md
+│   └── measurements.md
+├── design/       # CAD files (enclosure STLs)
 ├── docs/         # Design notes
+│   ├── game_design.md
+│   └── ui_design.md
+├── photos/       # Build & progress photos
 ├── DEVLOG.md
 ├── ROADMAP.md
+├── LICENSE
 └── README.md
 ```
 

@@ -1,0 +1,55 @@
+## Development Log
+
+### v0.0.1
+- ESP32 configured
+- E-Ink display working
+- First UI rendered
+
+![ESP32 to display wiring](photos/display-esp-wiring.jpg)
+- yes I know, I have soldered pins in a wrong direction (fixed it later)
+
+![Display plugged in](photos/dispalay_plugged_in.jpg)
+![First screen text](photos/first_screen_text.jpg)
+![First UI rendered](photos/firstUI.jpg)
+
+
+### Front lid
+
+![Many tries of the front panel](photos/many_tries_of_front_panel.jpg)
+
+#### Front lid Prototype 1 (18.6.2026)
+- First enclosure top cover printed
+- Learned enclosure is too small for PCB
+- Screw holes tested, quite small
+
+![First front panel - front](photos/first_front_panel-front.jpg)
+![First front panel - back](photos/first_front_panel-back.jpg)
+
+#### Front lid Prototype 2 (19.6.2026)
+- Fits well, but it sits on top of the PCB, needs to be made slightly over the edge
+
+#### Front lid Prototype 3 (19.6.2026)
+- Fits well, but still I need to adjust the "back" part to have a good grid for the PCB + edges
+
+#### Front lid Prototype 4 (19.6.2026)
+- almost perfect, maybe will adjust the site a bit more
+- In the future, I might make it deeper
+
+![Fourth front panel - front](photos/4th_fron_panel-front.jpg)
+![Fourth front panel - back](photos/4th_front_panel-back.jpg)
+
+
+### Buttons
+
+#### First button
+- first button imput succeeded!
+- and don't forget, BUTTONS HAVE ORIENTATION!
+
+BUTTON PRESSED
+BUTTON RELEASED
+
+![First button - works](photos/first_button.jpg)
+
+- then I conected the display as well and added a function which refreshes the display
+- when I know clikc on the button, the screen refreshes
+![Display refresh](photos/display_refreshes_when%20clicked.jpg)

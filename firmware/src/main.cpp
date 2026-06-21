@@ -14,6 +14,21 @@ constexpr int BUTTON_PIN = 0;
 
 bool last_state = HIGH;
 
+Monster monster;
+
+
+void refresh_display()
+{
+    display.setFullWindow();
+    display.firstPage();
+    do
+    {
+        draw_screen(monster);
+    } while (display.nextPage());
+
+    Serial.println("Display updated");
+}
+
 
 void setup()
 {
@@ -28,19 +43,8 @@ void setup()
 
     display.setRotation(0);
 
-    display.setFullWindow();
-
-    Monster monster;
-    display.firstPage();
-    do
-    {
-        
-        draw_screen(monster);
-
-    } while (display.nextPage());
-
-        Serial.println("Display updated");
-    }
+    refresh_display();
+}
 
 
 
@@ -53,6 +57,7 @@ void loop()
         if (current_state == LOW)
         {
             Serial.println("BUTTON PRESSED");
+            refresh_display();
         }
         else
         {
