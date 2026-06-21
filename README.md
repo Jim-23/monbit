@@ -53,8 +53,12 @@ Completed:
 
 - ESP32-C3 configured with PlatformIO
 - USB serial debugging enabled
-- E-Ink display connected and initialized
+- E-Ink display connected and initialised
 - First successful display render (`MONBIT v0.0.1`)
+
+Update:
+- basic GUI setup
+- connected first button
 
 
 ## Hardware
