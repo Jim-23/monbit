@@ -43,3 +43,10 @@ GxEPD2_154_GDEY0154D67
 SPI:
 
 SPI.begin(6, -1, 7, 5);
+
+
+
+
+
+
+
