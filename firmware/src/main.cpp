@@ -10,6 +10,10 @@
 GxEPD2_BW<GxEPD2_154_GDEY0154D67, GxEPD2_154_GDEY0154D67::HEIGHT> display(
     GxEPD2_154_GDEY0154D67(5, 4, 3, 2));
 
+constexpr int BUTTON_PIN = 0;
+
+bool last_state = HIGH;
+
 
 void setup()
 {
@@ -19,6 +23,8 @@ void setup()
     SPI.begin(6, -1, 7, 5);
 
     display.init(115200);
+
+    pinMode(BUTTON_PIN, INPUT_PULLUP);
 
     display.setRotation(0);
 
@@ -36,6 +42,23 @@ void setup()
         Serial.println("Display updated");
     }
 
+
+
 void loop()
 {
+    bool current_state = digitalRead(BUTTON_PIN);
+
+    if (current_state != last_state)
+    {
+        if (current_state == LOW)
+        {
+            Serial.println("BUTTON PRESSED");
+        }
+        else
+        {
+            Serial.println("BUTTON RELEASED");
+        }
+
+        last_state = current_state;
+    }
 }

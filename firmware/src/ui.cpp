@@ -33,7 +33,7 @@ namespace ui
     constexpr int FOOTER_MIDDLE = 100;
     constexpr int FOOTER_RIGHT = 160;
 
-    constexpr char VERSION[] = "v0.0.1";
+    constexpr char VERSION[] = "v0.0.2";
 }
 
 void draw_header()
