@@ -5,3 +5,5 @@
 .vscode/ipch
 *.bak
 *.tmp
+
+monbit/.vscode/
