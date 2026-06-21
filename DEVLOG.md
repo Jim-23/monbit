@@ -6,6 +6,7 @@
 - First UI rendered
 
 
+### Front lid
 
 #### Front lid Prototype 1 (18.6.2026)
 - First enclosure top cover printed
