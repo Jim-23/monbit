@@ -10,4 +10,7 @@ struct Monster
     uint16_t age = 0;
 
     void feed();
+    void play();
+    void sleep();
+    void tick();
 };
