@@ -51,10 +51,23 @@ void setup()
 
 void loop()
 {
-    if (feed_button_pressed())
+    Button button = poll_buttons();
+
+    switch (button)
     {
-        Serial.println("Feed button pressed!");
-        monster.feed();
-        refresh_display(false); // partially refresh display
+        case Button::Left:
+            Serial.println("LEFT");
+            break;
+
+        case Button::Middle:
+            Serial.println("MIDDLE");
+            break;
+
+        case Button::Right:
+            Serial.println("RIGHT");
+            break;
+
+        case Button::None:
+            break;
     }
 }

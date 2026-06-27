@@ -70,3 +70,14 @@ BUTTON RELEASED
     - I am considering to change it later to something like HUN, ENG, FUN, AGE or just use icons
 
 ![New GUI](photos/gui_update_0.jpg)
+
+
+#### Update
+- I have connected two more buttons and added them on pins 8, 9 and 10
+- Feed button was removed and function in code as well, currently the code only prints out which button was pressed
+    - LEFT
+    - MIDDLE
+    - RIGHT
+- later, I might add more buttons, but currently this works fine
+    - the breadboard is a mess, I know, but it will eventually be better.
+    ![3 Buttons](photos/buttons_connected_3.jpg)

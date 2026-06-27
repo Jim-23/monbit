@@ -135,6 +135,9 @@ Libraries:
   <img src="photos/feed_btn_hungry.jpg" alt="Feed button - hungry state" width="320">
   <img src="photos/feed_btn_less_hungry.jpg" alt="Feed button - less hungry state" width="320">
 </p>
+<p align="center">
+  <img src="photos/buttons_connected_3.jpg" alt="Three buttons connected" width="320">
+</p>
 
 ### Enclosure
 

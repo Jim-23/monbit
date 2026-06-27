@@ -1,4 +1,12 @@
 #pragma once
 
+enum class Button
+{
+    None,
+    Left,
+    Middle,
+    Right
+};
+
 void input_init();
-bool feed_button_pressed();
+Button poll_buttons();
