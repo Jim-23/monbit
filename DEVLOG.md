@@ -38,9 +38,6 @@
 ![Fourth front panel - front](photos/4th_fron_panel-front.jpg)
 ![Fourth front panel - back](photos/4th_front_panel-back.jpg)
 
-
-### Buttons
-
 #### First button (21.6.2026)
 - first button imput succeeded!
 - and don't forget, BUTTONS HAVE ORIENTATION!
@@ -52,10 +49,24 @@ BUTTON RELEASED
 
 - then I conected the display as well and added a function which refreshes the display
 - when I know clikc on the button, the screen refreshes
-![Display refresh](photos/display_refreshes_when%20clicked.jpg)
+![Display refresh](photos/display_refreshes_when_clicked.jpg)
+
+
+### v.0.0.2
+- first button connected
+- gui refreshment
+- renamed happiness to fun so in gui is displayed F instead of second H
 
 #### Button functions (27.6.2026)
-- the button now feeds the monster by 10 until its 0
+- the button now feeds the monster by 10 until its back to 0
+
 
 ![Button State - hungry ](photos/feed_btn_hungry.jpg)
 ![Button State - less hungry](photos/feed_btn_less_hungry.jpg)
+
+#### New GUI
+- I have updated the gui to look a bit cleaner and polished, obviously its not final yet
+- I had to also rename happines to fun so there are not 2 H displayed, it was quite confusing
+    - I am considering to change it later to something like HUN, ENG, FUN, AGE or just use icons
+
+![New GUI](photos/gui_update_0.jpg)

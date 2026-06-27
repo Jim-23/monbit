@@ -71,6 +71,7 @@ Completed:
 - If hunger is 0, monster is full
 - Screen has two options of refresh - full or partial
 - When hunger button is pressed, the screen refreshes partialy (without the big blink)
+- Happiness renamed to Fun
 
 
 
@@ -107,9 +108,42 @@ Libraries:
 
 ## Gallery
 
+### Wiring & Setup
+
 <p align="center">
   <img src="photos/display-esp-wiring.jpg" alt="ESP32 to e-ink display wiring" width="320">
+  <img src="photos/dispalay_plugged_in.jpg" alt="Display plugged in" width="320">
+</p>
+
+### Display & GUI
+
+<p align="center">
+  <img src="photos/first_screen_text.jpg" alt="First screen text render" width="320">
   <img src="photos/firstUI.jpg" alt="First UI rendered on the e-ink display" width="320">
+</p>
+<p align="center">
+  <img src="photos/gui_update_0.jpg" alt="GUI update" width="320">
+</p>
+
+### Buttons
+
+<p align="center">
+  <img src="photos/first_button.jpg" alt="First button wired" width="320">
+  <img src="photos/display_refreshes_when_clicked.jpg" alt="Display refreshing on button click" width="320">
+</p>
+<p align="center">
+  <img src="photos/feed_btn_hungry.jpg" alt="Feed button - hungry state" width="320">
+  <img src="photos/feed_btn_less_hungry.jpg" alt="Feed button - less hungry state" width="320">
+</p>
+
+### Enclosure
+
+<p align="center">
+  <img src="photos/many_tries_of_front_panel.jpg" alt="Multiple front panel iterations" width="320">
+</p>
+<p align="center">
+  <img src="photos/first_front_panel-front.jpg" alt="First front panel - front" width="320">
+  <img src="photos/first_front_panel-back.jpg" alt="First front panel - back" width="320">
 </p>
 <p align="center">
   <img src="photos/4th_fron_panel-front.jpg" alt="Front panel - front" width="320">
