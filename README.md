@@ -31,7 +31,7 @@ Current Version: `v0.0.2`
 ### Firmware
 - [x] ESP32 bring-up
 - [x] E-Ink display communication
-- [x] 1st button input system
+- [x] 3 button input system
 - [ ] All buttons are doing something
 - [ ] Sound output
 - [ ] Persistent storage
@@ -65,12 +65,12 @@ Update:
 
 Completed:
 
-- Button is detected
-- Button press works
-- Button decreases hunger by 10
-- If hunger is 0, monster is full
+- Buttons are detected and affecting the stats
+  - LEFT button => eat
+  - MIDDLE button => play
+  - RIGHT button => sleep
 - Screen has two options of refresh - full or partial
-- When hunger button is pressed, the screen refreshes partialy (without the big blink)
+- When button is pressed, the screen refreshes partialy (without the big blink)
 - Happiness renamed to Fun
 
 

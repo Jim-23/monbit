@@ -81,3 +81,14 @@ BUTTON RELEASED
 - later, I might add more buttons, but currently this works fine
     - the breadboard is a mess, I know, but it will eventually be better.
     ![3 Buttons](photos/buttons_connected_3.jpg)
+- added interaction with gui when button is pressed, for example
+    - press left button => feed the Monster, 
+        - hunger is decreased by 10
+    - press middle button => play with the Monster
+        - fun is increased by 10
+        - hunger is increased by 10
+        - energy is decreaased by 5
+    - press right button => Monster sleeps
+        - fun is decreased by 5
+        - hunger is increased by 5
+        - energy is increased by 10
