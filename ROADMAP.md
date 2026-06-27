@@ -35,7 +35,7 @@
 
 ### Done When
 
-* Buttons log presses
+* Buttons log presses + does something to monster (feeds it for example)
 * Switch turns device on/off
 
 ---

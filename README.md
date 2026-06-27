@@ -26,12 +26,13 @@ I want to document the entire journey, sharing both successes and failures, to c
 
 ## Current Progress
 
-Current Version: `v0.0.1`
+Current Version: `v0.0.2`
 
 ### Firmware
 - [x] ESP32 bring-up
 - [x] E-Ink display communication
-- [ ] Button input system
+- [x] 1st button input system
+- [ ] All buttons are doing something
 - [ ] Sound output
 - [ ] Persistent storage
 
@@ -59,6 +60,18 @@ Completed:
 Update:
 - basic GUI setup
 - connected first button
+
+### v0.0.2 — Buttons
+
+Completed:
+
+- Button is detected
+- Button press works
+- Button decreases hunger by 10
+- If hunger is 0, monster is full
+- Screen has two options of refresh - full or partial
+- When hunger button is pressed, the screen refreshes partialy (without the big blink)
+
 
 
 ## Hardware

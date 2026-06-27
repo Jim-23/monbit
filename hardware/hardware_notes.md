@@ -11,6 +11,15 @@ Monitor speed:
 USB:
 Works on macOS with data-capable USB-C cable
 
+## Buttons - care for monster
+| Pin | activity |
+|------------|----------|
+| 0    | feed   |
+| 1    | -    |
+| 8    | -  |
+| 9    | -  |
+
+
 ## Display
 
 Display:

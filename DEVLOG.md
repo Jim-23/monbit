@@ -53,3 +53,9 @@ BUTTON RELEASED
 - then I conected the display as well and added a function which refreshes the display
 - when I know clikc on the button, the screen refreshes
 ![Display refresh](photos/display_refreshes_when%20clicked.jpg)
+
+#### Button functions (27.6.2026)
+- the button now feeds the monster by 10 until its 0
+
+![Button State - hungry ](photos/feed_btn_hungry.jpg)
+![Button State - less hungry](photos/feed_btn_less_hungry.jpg)
