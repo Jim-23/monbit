@@ -15,7 +15,7 @@ void Monster::play()
     if (energy >= 10)
     {
         energy -= 10;
-        happiness += 5;
+        fun += 5;
     }
 }
 

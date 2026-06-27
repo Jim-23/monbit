@@ -6,7 +6,6 @@
 extern GxEPD2_BW<GxEPD2_154_GDEY0154D67,
                  GxEPD2_154_GDEY0154D67::HEIGHT> display;
 
-
 namespace ui
 {
     constexpr int SCREEN_WIDTH = 200;
@@ -14,32 +13,66 @@ namespace ui
 
     constexpr int MARGIN = 10;
 
-    constexpr int HEADER_Y = 20;
-    constexpr int VERSION_Y = 40;
+    // Header
+    constexpr int HEADER_Y = 18;
+    constexpr int HEADER_LINE_Y = 28;
 
-    constexpr int MONSTER_X = 65;
-    constexpr int MONSTER_Y = 90;
+    // Monster
+    constexpr int MONSTER_X = 60;
+    constexpr int MONSTER_Y = 80;
 
-    constexpr int STATS_X = MARGIN;
-    constexpr int HUNGER_Y = 160;
-    constexpr int ENERGY_Y = 180;
+    // Stats area
+    constexpr int STATS_LINE_Y = 135;
 
-    constexpr int STAT_X_SECOND_COLUMN = 140;
-    constexpr int HAPPINESS_Y = 160;
-    constexpr int AGE_Y = 180;
+    constexpr int LEFT_STATS_X = 15;
+    constexpr int RIGHT_STATS_X = 115;
 
-    constexpr int FOOTER_Y = 195;
-    constexpr int FOOTER_LEFT = 30;
-    constexpr int FOOTER_MIDDLE = 100;
-    constexpr int FOOTER_RIGHT = 160;
+    constexpr int STATS_FIRST_ROW_Y = 155;
+    constexpr int STATS_SECOND_ROW_Y = 175;
+
+    // Footer
+    constexpr int FOOTER_LINE_Y = 182;
+
+    constexpr int FOOTER_Y = 197;
+    constexpr int FOOTER_LEFT_X = 25;
+    constexpr int FOOTER_CENTER_X = 96;
+    constexpr int FOOTER_RIGHT_X = 165;
 
     constexpr char VERSION[] = "v0.0.2";
+}
+
+void draw_borders()
+{
+    display.drawLine(
+        0,
+        ui::HEADER_LINE_Y,
+        ui::SCREEN_WIDTH,
+        ui::HEADER_LINE_Y,
+        GxEPD_BLACK
+    );
+
+    display.drawLine(
+        0,
+        ui::STATS_LINE_Y,
+        ui::SCREEN_WIDTH,
+        ui::STATS_LINE_Y,
+        GxEPD_BLACK
+    );
+
+    display.drawLine(
+        0,
+        ui::FOOTER_LINE_Y,
+        ui::SCREEN_WIDTH,
+        ui::FOOTER_LINE_Y,
+        GxEPD_BLACK
+    );
 }
 
 void draw_header()
 {
     display.setFont(&FreeMonoBold9pt7b);
     display.setTextColor(GxEPD_BLACK);
+
     display.setCursor(ui::MARGIN, ui::HEADER_Y);
     display.printf("MONBIT %s", ui::VERSION);
 }
@@ -52,34 +85,44 @@ void draw_monster()
 
 void draw_stats(const Monster& monster)
 {
-    display.setCursor(ui::STATS_X, ui::HUNGER_Y);
+    // left column
+    display.setCursor(ui::LEFT_STATS_X, ui::STATS_FIRST_ROW_Y);
     display.printf("H:%d", monster.hunger);
 
-    display.setCursor(ui::STATS_X, ui::ENERGY_Y);
+    display.setCursor(ui::LEFT_STATS_X, ui::STATS_SECOND_ROW_Y);
     display.printf("E:%d", monster.energy);
 
-    display.setCursor(ui::STAT_X_SECOND_COLUMN, ui::HAPPINESS_Y);
-    display.printf("H:%d", monster.happiness);
+    // right column
+    display.setCursor(ui::RIGHT_STATS_X, ui::STATS_FIRST_ROW_Y);
+    display.printf("F:%d", monster.fun);
 
-    display.setCursor(ui::STAT_X_SECOND_COLUMN, ui::AGE_Y);
+    display.setCursor(ui::RIGHT_STATS_X, ui::STATS_SECOND_ROW_Y);
     display.printf("A:%d", monster.age);
 }
 
 void draw_footer()
 {
-    display.setCursor(ui::FOOTER_LEFT, ui::FOOTER_Y);
-    display.printf("<");
+    display.setCursor(ui::FOOTER_LEFT_X, ui::FOOTER_Y);
+    display.print("<");
 
-    display.fillRect(ui::FOOTER_MIDDLE, ui::FOOTER_Y - 8, 8, 8, GxEPD_BLACK);
+    // middle button indicator
+    display.fillRect(
+        ui::FOOTER_CENTER_X,
+        ui::FOOTER_Y - 8,
+        8,
+        8,
+        GxEPD_BLACK
+    );
 
-    display.setCursor(ui::FOOTER_RIGHT, ui::FOOTER_Y);
-    display.printf(">");
+    display.setCursor(ui::FOOTER_RIGHT_X, ui::FOOTER_Y);
+    display.print(">");
 }
 
 void draw_screen(const Monster& monster)
 {
     display.fillScreen(GxEPD_WHITE);
 
+    draw_borders();
     draw_header();
     draw_monster();
     draw_stats(monster);

@@ -55,7 +55,7 @@
 Example:
 
 * Hunger
-* Happiness
+* Fun
 * Energy
 
 ---
@@ -110,7 +110,7 @@ Example:
 Example Stats
 
 * Hunger
-* Happiness
+* Fun
 * Energy
 
 ### Done When
