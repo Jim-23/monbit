@@ -4,7 +4,7 @@
 
 struct Monster
 {
-    uint8_t hunger = 0;
+    uint8_t hunger = 40;
     uint8_t happiness = 100;
     uint8_t energy = 100;
     uint16_t age = 0;
