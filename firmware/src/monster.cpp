@@ -1,27 +1,37 @@
 
-#include <Arduino.h>
 #include "monster.hpp"
+
+namespace
+{
+    uint8_t clamp_increase(uint8_t value, uint8_t amount)
+    {
+        return (value + amount > 100) ? 100 : value + amount;
+    }
+
+    uint8_t clamp_decrease(uint8_t value, uint8_t amount)
+    {
+        return (value < amount) ? 0 : value - amount;
+    }
+}
 
 void Monster::feed()
 {
-    if (hunger == 0)
-        Serial.println("Monster is full");
-    else
-        hunger -= 10;
+    hunger = clamp_decrease(hunger, 10);
 }
 
 void Monster::play()
 {
-    if (energy >= 10)
-    {
-        energy -= 10;
-        fun += 5;
-    }
+    energy = clamp_decrease(energy, 5);
+    hunger = clamp_increase(hunger, 5);
+    fun = clamp_increase(fun, 10);
 }
 
 void Monster::sleep()
 {
-    energy = 100;
+    energy = clamp_increase(energy, 10);
+
+    fun = clamp_decrease(fun, 5);
+    hunger = clamp_increase(hunger, 5);
 }
 
 void Monster::tick()

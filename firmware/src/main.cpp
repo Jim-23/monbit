@@ -8,29 +8,43 @@
 #include "input.hpp"
 
 // BUSY, RST, DC, CS
-GxEPD2_BW<GxEPD2_154_GDEY0154D67, GxEPD2_154_GDEY0154D67::HEIGHT> display(
+GxEPD2_BW<GxEPD2_154_GDEY0154D67,
+          GxEPD2_154_GDEY0154D67::HEIGHT> display(
     GxEPD2_154_GDEY0154D67(5, 4, 3, 2));
 
 Monster monster;
 
-
-void refresh_display(bool full = false)
+enum class RefreshMode
 {
-    // TODO periodically refresh fully display after some time
-    if (full)
+    Full,
+    Partial
+};
+
+void refresh_display(RefreshMode mode)
+{
+    if (mode == RefreshMode::Full)
+    {
         display.setFullWindow();
+    }
     else
-        display.setPartialWindow(0, 0, display.width(), display.height());
+    {
+        display.setPartialWindow(
+            0,
+            0,
+            display.width(),
+            display.height());
+    }
 
     display.firstPage();
+
     do
     {
         draw_screen(monster);
-    } while (display.nextPage());
+    }
+    while (display.nextPage());
 
     Serial.println("Display updated");
 }
-
 
 void setup()
 {
@@ -44,30 +58,39 @@ void setup()
     display.init(115200);
     display.setRotation(0);
 
-    refresh_display(true);
+    refresh_display(RefreshMode::Full);
 }
-
-
 
 void loop()
 {
+    bool needs_refresh = false;
+
     Button button = poll_buttons();
 
     switch (button)
     {
         case Button::Left:
-            Serial.println("LEFT");
+            monster.feed();
+            needs_refresh = true;
             break;
 
         case Button::Middle:
-            Serial.println("MIDDLE");
+            monster.play();
+            needs_refresh = true;
             break;
 
         case Button::Right:
-            Serial.println("RIGHT");
+            monster.sleep();
+            needs_refresh = true;
             break;
 
         case Button::None:
             break;
+    }
+
+    if (needs_refresh)
+    {
+        refresh_display(RefreshMode::Partial);
+        needs_refresh = false;
     }
 }
