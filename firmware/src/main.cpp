@@ -5,21 +5,23 @@
 
 #include "monster.hpp"
 #include "ui.hpp"
+#include "input.hpp"
 
 // BUSY, RST, DC, CS
 GxEPD2_BW<GxEPD2_154_GDEY0154D67, GxEPD2_154_GDEY0154D67::HEIGHT> display(
     GxEPD2_154_GDEY0154D67(5, 4, 3, 2));
 
-constexpr int BUTTON_PIN = 0;
-
-bool last_state = HIGH;
-
 Monster monster;
 
 
-void refresh_display()
+void refresh_display(bool full = false)
 {
-    display.setFullWindow();
+    // TODO periodically refresh fully display after some time
+    if (full)
+        display.setFullWindow();
+    else
+        display.setPartialWindow(0, 0, display.width(), display.height());
+
     display.firstPage();
     do
     {
@@ -37,33 +39,22 @@ void setup()
 
     SPI.begin(6, -1, 7, 5);
 
+    input_init();
+
     display.init(115200);
-
-    pinMode(BUTTON_PIN, INPUT_PULLUP);
-
     display.setRotation(0);
 
-    refresh_display();
+    refresh_display(true);
 }
 
 
 
 void loop()
 {
-    bool current_state = digitalRead(BUTTON_PIN);
-
-    if (current_state != last_state)
+    if (feed_button_pressed())
     {
-        if (current_state == LOW)
-        {
-            Serial.println("BUTTON PRESSED");
-            refresh_display();
-        }
-        else
-        {
-            Serial.println("BUTTON RELEASED");
-        }
-
-        last_state = current_state;
+        Serial.println("Feed button pressed!");
+        monster.feed();
+        refresh_display(false); // partially refresh display
     }
 }
