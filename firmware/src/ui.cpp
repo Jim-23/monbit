@@ -41,6 +41,8 @@ namespace ui
     constexpr char VERSION[] = "v0.0.3";
 }
 
+// TODO: replace ASCII monster with sprite
+
 void draw_borders()
 {
     display.drawLine(

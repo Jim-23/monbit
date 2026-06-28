@@ -39,7 +39,7 @@
 ![Fourth front panel - back](photos/4th_front_panel-back.jpg)
 
 #### First button (21.6.2026)
-- first button imput succeeded!
+- first button input succeeded!
 - and don't forget, BUTTONS HAVE ORIENTATION!
 
 BUTTON PRESSED
@@ -53,7 +53,7 @@ BUTTON RELEASED
 
 
 ### v.0.0.2
-- first button connected
+- first button connected to pin 0
 - gui refreshment
 - renamed happiness to fun so in gui is displayed F instead of second H
 
@@ -92,3 +92,10 @@ BUTTON RELEASED
         - fun is decreased by 5
         - hunger is increased by 5
         - energy is increased by 10
+
+### v.0.0.3 (28.6.2026)
+- Added flash storage system
+- It was quite easy actually so I am happy for that
+- Saving is performed after a button is pressed
+- Would like to also add an autosave every 5 minutes
+

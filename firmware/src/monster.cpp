@@ -1,6 +1,8 @@
 
 #include "monster.hpp"
 
+// TODO consider renaming hunger to something else, its confusing tah H is bad when 100 but others are good
+
 namespace
 {
     constexpr uint8_t MAX_STAT = 100;

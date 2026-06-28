@@ -26,15 +26,16 @@ I want to document the entire journey, sharing both successes and failures, to c
 
 ## Current Progress
 
-Current Version: `v0.0.2`
+Current Version: `v0.0.3` (28.6.2026)
 
 ### Firmware
 - [x] ESP32 bring-up
 - [x] E-Ink display communication
 - [x] 3 button input system
-- [ ] All buttons are doing something
+- [x] Persistent storage
+- [x] Auto Monster state change
 - [ ] Sound output
-- [ ] Persistent storage
+
 
 ### Hardware
 - [x] Components selected
@@ -51,7 +52,6 @@ Current Version: `v0.0.2`
 ### v0.0.1 — Hello Hardware
 
 Completed:
-
 - ESP32-C3 configured with PlatformIO
 - USB serial debugging enabled
 - E-Ink display connected and initialised
@@ -64,7 +64,6 @@ Update:
 ### v0.0.2 — Buttons
 
 Completed:
-
 - Buttons are detected and affecting the stats
   - LEFT button => eat
   - MIDDLE button => play
@@ -72,6 +71,13 @@ Completed:
 - Screen has two options of refresh - full or partial
 - When button is pressed, the screen refreshes partialy (without the big blink)
 - Happiness renamed to Fun
+
+### v0.0.3 - Storage
+
+Completed:
+- Every tick (currently 10 seconds) the hunger, fun and energy is changed by 1
+- Everytime the button is pressed, the current state of the Monster is saved to Flash
+- When rebooted, the data is loaded
 
 
 
