@@ -3,38 +3,64 @@
 
 namespace
 {
-    uint8_t clamp_increase(uint8_t value, uint8_t amount)
+    constexpr uint8_t MAX_STAT = 100;
+    constexpr uint8_t MIN_STAT = 0;
+
+    constexpr uint8_t FEED_AMOUNT = 10;
+    constexpr uint8_t PLAY_ENERGY_COST = 10;
+    constexpr uint8_t PLAY_FUN_GAIN = 5;
+    constexpr uint8_t PLAY_HUNGER_GAIN = 5;
+
+    constexpr uint8_t SLEEP_ENERGY_GAIN = 10;
+    constexpr uint8_t SLEEP_FUN_LOSS = 5;
+    constexpr uint8_t SLEEP_HUNGER_GAIN = 5;
+
+    constexpr uint8_t TICK_HUNGER_GAIN = 1;
+    constexpr uint8_t TICK_FUN_LOSS = 1;
+    constexpr uint8_t TICK_ENERGY_LOSS = 1;
+
+    uint8_t increase_stat(uint8_t value, uint8_t amount)
     {
-        return (value + amount > 100) ? 100 : value + amount;
+        return (value + amount > MAX_STAT)
+            ? MAX_STAT
+            : value + amount;
     }
 
-    uint8_t clamp_decrease(uint8_t value, uint8_t amount)
+    uint8_t decrease_stat(uint8_t value, uint8_t amount)
     {
-        return (value < amount) ? 0 : value - amount;
+        return (value < amount)
+            ? MIN_STAT
+            : value - amount;
     }
 }
 
+
 void Monster::feed()
 {
-    hunger = clamp_decrease(hunger, 10);
+    hunger = decrease_stat(hunger, FEED_AMOUNT);
 }
 
 void Monster::play()
 {
-    energy = clamp_decrease(energy, 5);
-    hunger = clamp_increase(hunger, 5);
-    fun = clamp_increase(fun, 10);
+    if (energy >= 10)
+    {
+        energy = decrease_stat(energy, PLAY_ENERGY_COST);
+        hunger = increase_stat(hunger, PLAY_HUNGER_GAIN);
+        fun = increase_stat(fun, PLAY_FUN_GAIN);
+    }
 }
 
 void Monster::sleep()
 {
-    energy = clamp_increase(energy, 10);
+    energy = increase_stat(energy, SLEEP_ENERGY_GAIN);
 
-    fun = clamp_decrease(fun, 5);
-    hunger = clamp_increase(hunger, 5);
+    fun = decrease_stat(fun, SLEEP_FUN_LOSS);
+    hunger = increase_stat(hunger, SLEEP_HUNGER_GAIN);
 }
 
 void Monster::tick()
 {
-    hunger++;
+    hunger = increase_stat(hunger, TICK_HUNGER_GAIN);
+    fun = decrease_stat(fun, TICK_FUN_LOSS);
+    energy = decrease_stat(energy, TICK_ENERGY_LOSS);
 }

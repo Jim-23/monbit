@@ -40,17 +40,17 @@
 
 ---
 
-## 0.0.3 — Memory System
+## 0.0.3 — Memory System
 
-### Goal
+### Goal:
+- Monster state changes over time
+- Save current state to flash
+- Load state after reboot
 
-* Save current state
-* Load saved state
-
-### Done When
-
-* Restart device
-* State persists
+### Done when:
+- Power off device
+- Power on device
+- Monster stats are restored
 
 Example:
 

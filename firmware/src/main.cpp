@@ -14,6 +14,9 @@ GxEPD2_BW<GxEPD2_154_GDEY0154D67,
 
 Monster monster;
 
+constexpr unsigned long TICK_INTERVAL_MS = 10000;
+unsigned long last_tick_ms = 0;
+
 enum class RefreshMode
 {
     Full,
@@ -64,6 +67,16 @@ void setup()
 void loop()
 {
     bool needs_refresh = false;
+    unsigned long now = millis();
+
+    if (now - last_tick_ms >= TICK_INTERVAL_MS)
+    {
+        monster.tick();
+        last_tick_ms = now;
+        needs_refresh = true;
+
+        Serial.println("Monster tick");
+    }
 
     Button button = poll_buttons();
 
