@@ -6,6 +6,7 @@
 #include "monster.hpp"
 #include "ui.hpp"
 #include "input.hpp"
+#include "storage.hpp"
 
 // BUSY, RST, DC, CS
 GxEPD2_BW<GxEPD2_154_GDEY0154D67,
@@ -52,7 +53,7 @@ void refresh_display(RefreshMode mode)
 void setup()
 {
     Serial.begin(115200);
-    Serial.println("=== MONBIT BOOTS ===");
+    Serial.println("=== MONBIT ===");
 
     SPI.begin(6, -1, 7, 5);
 
@@ -60,6 +61,8 @@ void setup()
 
     display.init(115200);
     display.setRotation(0);
+
+    load_monster(monster);
 
     refresh_display(RefreshMode::Full);
 }
@@ -84,16 +87,19 @@ void loop()
     {
         case Button::Left:
             monster.feed();
+            save_monster(monster);
             needs_refresh = true;
             break;
 
         case Button::Middle:
             monster.play();
+            save_monster(monster);
             needs_refresh = true;
             break;
 
         case Button::Right:
             monster.sleep();
+            save_monster(monster);
             needs_refresh = true;
             break;
 
