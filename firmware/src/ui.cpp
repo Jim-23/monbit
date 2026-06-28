@@ -38,7 +38,7 @@ namespace ui
     constexpr int FOOTER_CENTER_X = 96;
     constexpr int FOOTER_RIGHT_X = 165;
 
-    constexpr char VERSION[] = "v0.0.2";
+    constexpr char VERSION[] = "v0.0.3";
 }
 
 void draw_borders()
