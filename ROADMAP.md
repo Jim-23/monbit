@@ -40,7 +40,7 @@
 
 ---
 
-## 0.0.3 — Memory System
+## 0.0.3 — Memory System
 
 ### Goal:
 - Monster state changes over time
@@ -74,7 +74,7 @@ Example:
 
 ### Done When
 
-* Device plays beep sound
+* The device plays a beep sound
 * Sound triggered by button press
 
 ---
@@ -85,7 +85,7 @@ Example:
 
 * Deep sleep support
 * Wake on button press
-* Battery powers device
+* The battery powers the device
 * Device can charge via USB-C
 * Battery optimization
 
@@ -96,7 +96,7 @@ Example:
 ### Done When
 
 * Device sleeps automatically
-* Button wakes device
+* Button wakes the device
 
 ---
 
