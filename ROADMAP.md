@@ -43,6 +43,7 @@
 ## 0.0.3 — Memory System
 
 ### Goal:
+
 - Monster state changes over time
 - Save current state to flash
 - Load state after reboot
