@@ -26,26 +26,59 @@ I want to document the entire journey, sharing both successes and failures, to c
 
 ## Current Progress
 
-Current Version: `v0.0.3` (28.6.2026)
+Current Version: `v0.0.3` (2026-06-28)
 
 ### Firmware
 - [x] ESP32 bring-up
+- [x] Project architecture (modular source files)
 - [x] E-Ink display communication
-- [x] 3 button input system
-- [x] Persistent storage
-- [x] Auto Monster state change
-- [ ] Sound output
-
+- [x] Basic UI rendering
+- [x] Partial display refresh
+- [x] 3-button input system
+- [x] Button debouncing
+- [x] Monster state system
+- [x] Monster actions (Feed / Play / Sleep)
+- [x] Automatic monster tick system
+- [x] Persistent storage (save/load)
+- [ ] Audio subsystem
+- [ ] Battery management
+- [ ] Deep sleep
+- [ ] Sprite rendering
+- [ ] Menu system
 
 ### Hardware
 - [x] Components selected
-- [x] Display wired
-- [x] First enclosure prototype designed - front lid
-- [ ] Battery integration
-- [ ] Button wiring
-- [ ] Final enclosure prototype
-  
+- [x] ESP32 tested
+- [x] E-Ink display tested
+- [x] Buttons tested (breadboard)
+- [x] First enclosure front prototype designed
+- [ ] Audio amplifier connected
+- [ ] Speaker connected
+- [ ] Battery integrated
+- [ ] Charging module integrated
+- [ ] Power switch integrated
+- [ ] Permanent wiring
+- [ ] First fully assembled prototype
+- [ ] Final enclosure
 
+### Gameplay
+- [x] Basic monster stats
+- [x] Monster actions
+- [x] Time-based stat changes
+- [ ] Monster emotions
+- [ ] Growth/aging system
+- [ ] Evolution
+- [ ] Random events
+- [ ] Game balancing
+
+### Documentation
+- [x] README
+- [x] Roadmap
+- [x] Devlog
+- [x] Project versioning
+- [ ] Wiring diagrams
+- [ ] Hardware BOM
+- [ ] Build instructions
 
 ## Milestones
 
@@ -64,19 +97,19 @@ Update:
 ### v0.0.2 — Buttons
 
 Completed:
-- Buttons are detected and affecting the stats
+- Buttons are detected and affect                    the stats
   - LEFT button => eat
   - MIDDLE button => play
   - RIGHT button => sleep
-- Screen has two options of refresh - full or partial
-- When button is pressed, the screen refreshes partialy (without the big blink)
+- Screen has two options for refresh - full or partial
+- When the button is pressed, the screen refreshes partially (without the big blink)
 - Happiness renamed to Fun
 
 ### v0.0.3 - Storage
 
 Completed:
-- Every tick (currently 10 seconds) the hunger, fun and energy is changed by 1
-- Everytime the button is pressed, the current state of the Monster is saved to Flash
+- Every tick (currently 10 seconds), the hunger, fun and energy are changed by 1
+- Every time the button is pressed, the current state of the Monster is saved to Flash
 - When rebooted, the data is loaded
 
 
@@ -89,8 +122,6 @@ Core components:
 - WeAct 1.54" E-Ink Display
 - 500mAh LiPo Battery
 - TP4056 USB-C Charging Module
-
-Planned components:
 
 - Tactile Buttons
 - MAX98357A Audio Amplifier
