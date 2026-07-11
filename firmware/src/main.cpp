@@ -7,6 +7,7 @@
 #include "ui.hpp"
 #include "input.hpp"
 #include "storage.hpp"
+#include "audio.hpp"
 
 // BUSY, RST, DC, CS
 GxEPD2_BW<GxEPD2_154_GDEY0154D67,
@@ -62,9 +63,20 @@ void setup()
     display.init(115200);
     display.setRotation(0);
 
+    if (!audio::init())
+    {
+        Serial.println("Audio init failed");
+    }
+    else
+    {
+        Serial.println("Audio initialized");
+    }
+
     load_monster(monster);
 
     refresh_display(RefreshMode::Full);
+
+    audio::play_test_tone();
 }
 
 void loop()
