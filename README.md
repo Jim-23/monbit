@@ -40,7 +40,7 @@ Current Version: `v0.0.3` (2026-06-28)
 - [x] Monster actions (Feed / Play / Sleep)
 - [x] Automatic monster tick system
 - [x] Persistent storage (save/load)
-- [ ] Audio subsystem
+- [ ] Audio subsystem - WIP
 - [ ] Battery management
 - [ ] Deep sleep
 - [ ] Sprite rendering
@@ -52,8 +52,8 @@ Current Version: `v0.0.3` (2026-06-28)
 - [x] E-Ink display tested
 - [x] Buttons tested (breadboard)
 - [x] First enclosure front prototype designed
-- [ ] Audio amplifier connected
-- [ ] Speaker connected
+- [x] Audio amplifier connected
+- [x] Speaker connected
 - [ ] Battery integrated
 - [ ] Charging module integrated
 - [ ] Power switch integrated

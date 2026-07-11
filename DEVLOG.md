@@ -99,3 +99,23 @@ BUTTON RELEASED
 - Saving is performed after a button is pressed
 - Would like to also add an autosave every 5 minutes
 
+
+### v0.0.4 (11.07.2026)
+
+#### Audio System (In Progress)
+
+
+- Soldered replacement speaker to MAX98357A amplifier.
+- Wired MAX98357A to ESP32-C3.
+- Created initial audio module (audio.hpp / audio.cpp).
+- Confirmed amplifier and speaker produce output.
+
+#### Current Issue
+- Audio output is distorted (buzz/static) instead of a clean tone.
+- The issue appears to be related to the I2S configuration or ESP32-C3 pin mapping rather than faulty hardware.
+
+#### Next Steps
+- Verify recommended I2S pin mapping for ESP32
+- Evaluate migration to the new Arduino ESP_I2S API.
+- Produce first clean test tone.
+- Integrate sound effects into Monbit actions.
