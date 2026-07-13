@@ -40,7 +40,7 @@ Current Version: `v0.0.3` (2026-06-28)
 - [x] Monster actions (Feed / Play / Sleep)
 - [x] Automatic monster tick system
 - [x] Persistent storage (save/load)
-- [ ] Audio subsystem - WIP
+- [x] Audio subsystem
 - [ ] Battery management
 - [ ] Deep sleep
 - [ ] Sprite rendering
@@ -65,6 +65,7 @@ Current Version: `v0.0.3` (2026-06-28)
 - [x] Basic monster stats
 - [x] Monster actions
 - [x] Time-based stat changes
+- [ ] Beep when button is pressed
 - [ ] Monster emotions
 - [ ] Growth/aging system
 - [ ] Evolution

@@ -52,3 +52,33 @@ GxEPD2_154_GDEY0154D67
 SPI:
 
 SPI.begin(6, -1, 7, 5);
+
+
+### Audio wiring to ESP
+
+| MAX98357A | ESP32-C3 |
+|------------|----------|
+| VIN | 3.3V |
+| GND | GND |
+| DIN | GPIO0 |
+| BCLK | GPIO1 |
+| LRC (WS) | GPIO20 |
+| SD | NC |
+| GAIN | NC |
+| SPK+ | Speaker + |
+| SPK- | Speaker - |
+
+#### Working Configuration
+
+```cpp
+Sample Rate          : 22050 Hz
+Bits Per Sample      : 16-bit
+DMA Buffer Count     : 8
+DMA Buffer Length    : 512
+Channel Format       : I2S_CHANNEL_FMT_RIGHT_LEFT
+Communication Format : I2S_COMM_FORMAT_STAND_I2S
+Waveform             : Sine
+Amplitude            : 75%
+```
+
+> **Note:** 16000 Hz also produced clean audio, but 22050 Hz was selected as the project default.

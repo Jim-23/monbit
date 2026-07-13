@@ -110,11 +110,17 @@ BUTTON RELEASED
 - The speaker produces buzz instead of clear tone and I have no idea why, maybe wrong I2C config
 - Wiring to ESP:
 
-MAX98357A	ESP32-C3
-VIN	3.3V
-GND	GND
-DIN	GPIO0
-BCLK	GPIO1
-LRC (WS)	GPIO20
-![Speaker connection](photos/speaker_connection.jpg)
+    MAX98357A	ESP32-C3
+    VIN	3.3V
+    GND	GND
+    DIN	GPIO0
+    BCLK	GPIO1
+    LRC (WS)	GPIO20
+
+#### Update (13.07.2026)
+- finally managed to implement clear sound with a specific configuration
+- the problem was not the HW but the config for the audio
+- wiring stays as is
+- you can hear one beep sound when you power the device
+![Speaker connection + spaghetti monster](photos/speaker_connection.jpg)
 
