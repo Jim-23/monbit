@@ -104,18 +104,17 @@ BUTTON RELEASED
 
 #### Audio System (In Progress)
 
+- Soldered speaker to MAX98357A amplifier.
+- Wired amplifier to ESP32-C3.
+- Created audio module (audio.hpp and audio.cpp).
+- The speaker produces buzz instead of clear tone and I have no idea why, maybe wrong I2C config
+- Wiring to ESP:
 
-- Soldered replacement speaker to MAX98357A amplifier.
-- Wired MAX98357A to ESP32-C3.
-- Created initial audio module (audio.hpp / audio.cpp).
-- Confirmed amplifier and speaker produce output.
+MAX98357A	ESP32-C3
+VIN	3.3V
+GND	GND
+DIN	GPIO0
+BCLK	GPIO1
+LRC (WS)	GPIO20
+![Speaker connection](photos/speaker_connection.jpg)
 
-#### Current Issue
-- Audio output is distorted (buzz/static) instead of a clean tone.
-- The issue appears to be related to the I2S configuration or ESP32-C3 pin mapping rather than faulty hardware.
-
-#### Next Steps
-- Verify recommended I2S pin mapping for ESP32
-- Evaluate migration to the new Arduino ESP_I2S API.
-- Produce first clean test tone.
-- Integrate sound effects into Monbit actions.
