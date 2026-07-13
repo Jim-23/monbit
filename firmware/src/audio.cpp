@@ -12,147 +12,138 @@ namespace
     constexpr gpio_num_t PIN_LRC  = GPIO_NUM_20;
     constexpr gpio_num_t PIN_DIN  = GPIO_NUM_0;
 
-    using W = audio::Waveform;
+    constexpr uint32_t SAMPLE_RATE = 22050;
 
-    // Configs to cycle through on boot.
-    // Columns: sample_rate, dma_buf_count, dma_buf_len, channel_format, comm_format, waveform, amplitude, label
-    constexpr audio::Config TEST_CONFIGS[] = {
-        { 44100, 8, 512, I2S_CHANNEL_FMT_RIGHT_LEFT, I2S_COMM_FORMAT_STAND_I2S,       W::Sine,     0.75f, "44100 stereo I2S     sine     75%" },
-        { 44100, 8, 512, I2S_CHANNEL_FMT_ALL_LEFT,   I2S_COMM_FORMAT_STAND_I2S,       W::Sine,     0.75f, "44100 mono   I2S     sine     75%" },
-        { 44100, 8, 512, I2S_CHANNEL_FMT_RIGHT_LEFT, I2S_COMM_FORMAT_STAND_MSB,       W::Sine,     0.75f, "44100 stereo MSB     sine     75%" },
-        { 22050, 8, 512, I2S_CHANNEL_FMT_RIGHT_LEFT, I2S_COMM_FORMAT_STAND_I2S,       W::Sine,     0.75f, "22050 stereo I2S     sine     75%" },
-        { 16000, 8, 512, I2S_CHANNEL_FMT_RIGHT_LEFT, I2S_COMM_FORMAT_STAND_I2S,       W::Sine,     0.75f, "16000 stereo I2S     sine     75%" },
-        { 44100, 8, 256, I2S_CHANNEL_FMT_RIGHT_LEFT, I2S_COMM_FORMAT_STAND_I2S,       W::Sine,     0.75f, "44100 stereo I2S     sine     buf=256" },
-        { 44100, 4, 512, I2S_CHANNEL_FMT_RIGHT_LEFT, I2S_COMM_FORMAT_STAND_I2S,       W::Sine,     0.75f, "44100 stereo I2S     sine     dma=4" },
-        { 44100, 8, 512, I2S_CHANNEL_FMT_RIGHT_LEFT, I2S_COMM_FORMAT_STAND_I2S,       W::Square,   0.40f, "44100 stereo I2S     square   40%" },
-        { 44100, 8, 512, I2S_CHANNEL_FMT_RIGHT_LEFT, I2S_COMM_FORMAT_STAND_I2S,       W::Triangle, 0.75f, "44100 stereo I2S     triangle 75%" },
-        { 44100, 8, 512, I2S_CHANNEL_FMT_RIGHT_LEFT, I2S_COMM_FORMAT_STAND_I2S,       W::Sawtooth, 0.40f, "44100 stereo I2S     sawtooth 40%" },
-        { 44100, 8, 512, I2S_CHANNEL_FMT_RIGHT_LEFT, I2S_COMM_FORMAT_STAND_PCM_SHORT, W::Sine,     0.75f, "44100 stereo PCM_S   sine     75%" },
+    constexpr uint8_t DMA_BUFFER_COUNT = 8;
+    constexpr uint16_t DMA_BUFFER_LENGTH = 512;
+
+    constexpr int WRITE_CHUNK_FRAMES = 256;
+
+    struct StereoFrame
+    {
+        int16_t left;
+        int16_t right;
     };
 
-    // Chunk size for batched writes (number of stereo frames per write call)
-    constexpr int WRITE_CHUNK_FRAMES = 256;
+    int16_t generate_sample(float phase)
+    {
+        return static_cast<int16_t>(
+            sinf(2.0f * static_cast<float>(M_PI) * phase) * 32767.0f);
+    }
 }
 
-bool audio::init(const Config& cfg)
+bool audio::init()
 {
-    // Uninstall previous driver if already running
     i2s_driver_uninstall(I2S_PORT);
 
     i2s_config_t config = {
-        .mode                 = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX),
-        .sample_rate          = cfg.sample_rate,
-        .bits_per_sample      = I2S_BITS_PER_SAMPLE_16BIT,
-        .channel_format       = cfg.channel_format,
-        .communication_format = cfg.comm_format,
-        .intr_alloc_flags     = 0,
-        .dma_buf_count        = cfg.dma_buf_count,
-        .dma_buf_len          = cfg.dma_buf_len,
-        .use_apll             = false,
-        .tx_desc_auto_clear   = true,
-        .fixed_mclk           = 0
+        .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX),
+        .sample_rate = SAMPLE_RATE,
+        .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
+        .channel_format = I2S_CHANNEL_FMT_RIGHT_LEFT,
+        .communication_format = I2S_COMM_FORMAT_STAND_I2S,
+        .intr_alloc_flags = 0,
+        .dma_buf_count = DMA_BUFFER_COUNT,
+        .dma_buf_len = DMA_BUFFER_LENGTH,
+        .use_apll = false,
+        .tx_desc_auto_clear = true,
+        .fixed_mclk = 0
     };
 
     i2s_pin_config_t pins = {
-        .bck_io_num   = PIN_BCLK,
-        .ws_io_num    = PIN_LRC,
+        .bck_io_num = PIN_BCLK,
+        .ws_io_num = PIN_LRC,
         .data_out_num = PIN_DIN,
-        .data_in_num  = I2S_PIN_NO_CHANGE
+        .data_in_num = I2S_PIN_NO_CHANGE
     };
 
     if (i2s_driver_install(I2S_PORT, &config, 0, nullptr) != ESP_OK)
+    {
+        Serial.println("Audio: driver install failed");
         return false;
+    }
 
     if (i2s_set_pin(I2S_PORT, &pins) != ESP_OK)
+    {
+        Serial.println("Audio: pin configuration failed");
         return false;
+    }
 
+    Serial.println("Audio initialized");
     return true;
 }
 
-static int16_t generate_sample(audio::Waveform waveform, float phase)
+void audio::beep(uint16_t frequency, uint16_t duration_ms)
 {
-    // phase in [0, 1)
-    float s;
-    switch (waveform)
-    {
-        case audio::Waveform::Square:
-            s = phase < 0.5f ? 1.0f : -1.0f;
-            break;
-        case audio::Waveform::Triangle:
-            s = (phase < 0.5f) ? (4.0f * phase - 1.0f)
-                               : (3.0f - 4.0f * phase);
-            break;
-        case audio::Waveform::Sawtooth:
-            s = 2.0f * phase - 1.0f;
-            break;
-        case audio::Waveform::Sine:
-        default:
-            s = sinf(2.0f * (float)M_PI * phase);
-            break;
-    }
-    return (int16_t)(s * 32767.0f);
-}
+    const float phase_increment =
+        static_cast<float>(frequency) / SAMPLE_RATE;
 
-// Writes a tone in chunks to avoid per-sample DMA overhead.
-void audio::play_test_tone(uint32_t sample_rate, float frequency_hz, uint32_t duration_ms,
-                            Waveform waveform, float amplitude)
-{
-    // Each frame = left + right channel (stereo layout)
-    struct StereoFrame { int16_t left; int16_t right; };
+    const int total_frames =
+        static_cast<int>((uint64_t)SAMPLE_RATE * duration_ms / 1000);
 
-    const float scale = amplitude < 0.0f ? 0.0f : (amplitude > 1.0f ? 1.0f : amplitude);
-    const float phase_inc = frequency_hz / (float)sample_rate;
-    const int   total_frames = (int)((uint64_t)sample_rate * duration_ms / 1000);
     StereoFrame chunk[WRITE_CHUNK_FRAMES];
 
     int written_frames = 0;
+
     while (written_frames < total_frames)
     {
         int frames_this_chunk = total_frames - written_frames;
+
         if (frames_this_chunk > WRITE_CHUNK_FRAMES)
+        {
             frames_this_chunk = WRITE_CHUNK_FRAMES;
+        }
 
         for (int i = 0; i < frames_this_chunk; i++)
         {
-            float phase = fmodf((written_frames + i) * phase_inc, 1.0f);
-            int16_t v = (int16_t)(generate_sample(waveform, phase) * scale);
-            chunk[i] = { v, v };
+            float phase = fmodf(
+                (written_frames + i) * phase_increment,
+                1.0f);
+
+            int16_t value =
+                static_cast<int16_t>(generate_sample(phase) * 0.75f);
+
+            chunk[i] = { value, value };
         }
 
-        size_t bytes_written = 0;
-        i2s_write(I2S_PORT,
-                  chunk,
-                  frames_this_chunk * sizeof(StereoFrame),
-                  &bytes_written,
-                  portMAX_DELAY);
+        size_t bytes_written;
+
+        i2s_write(
+            I2S_PORT,
+            chunk,
+            frames_this_chunk * sizeof(StereoFrame),
+            &bytes_written,
+            portMAX_DELAY);
 
         written_frames += frames_this_chunk;
     }
 }
 
-void audio::run_config_tests()
+void audio::play_startup()
 {
-    constexpr int NUM_CONFIGS = sizeof(TEST_CONFIGS) / sizeof(TEST_CONFIGS[0]);
+    beep(440, 80);
+    delay(20);
 
-    Serial.println("--- Audio config test start ---");
+    beep(660, 80);
+    delay(20);
 
-    for (int i = 0; i < NUM_CONFIGS; i++)
-    {
-        const Config& cfg = TEST_CONFIGS[i];
-        Serial.printf("[%d/%d] %s\n", i + 1, NUM_CONFIGS, cfg.label);
+    beep(880, 120);
+}
 
-        if (!init(cfg))
-        {
-            Serial.println("  init FAILED, skipping");
-            continue;
-        }
+void audio::play_feed()
+{
+    beep(900, 60);
+}
 
-        // 440 Hz A note, then 880 Hz A5 — easier to distinguish quality
-        play_test_tone(cfg.sample_rate, 440.0f, 500, cfg.waveform, cfg.amplitude);
-        delay(200);
-        play_test_tone(cfg.sample_rate, 880.0f, 500, cfg.waveform, cfg.amplitude);
-        delay(600); // pause between configs so you can tell them apart
-    }
+void audio::play_play()
+{
+    beep(700, 70);
+    delay(20);
 
-    Serial.println("--- Audio config test done ---");
+    beep(900, 70);
+}
+
+void audio::play_sleep()
+{
+    beep(220, 180);
 }

@@ -63,12 +63,16 @@ void setup()
     display.init(115200);
     display.setRotation(0);
 
+    if (!audio::init())
+    {
+        Serial.println("Audio initialization failed");
+    }
+
     load_monster(monster);
 
     refresh_display(RefreshMode::Full);
 
-    // Cycles through multiple I2S configs so you can hear which one sounds clean.
-    audio::run_config_tests();
+    audio::play_startup();
 }
 
 void loop()
