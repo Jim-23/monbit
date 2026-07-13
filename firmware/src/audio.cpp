@@ -12,7 +12,7 @@ namespace
     constexpr gpio_num_t PIN_LRC = GPIO_NUM_20;
     constexpr gpio_num_t PIN_DIN = GPIO_NUM_0;
 
-    constexpr uint32_t SAMPLE_RATE = 44100;
+    constexpr uint32_t SAMPLE_RATE = 16000; //44100;
 }
 
 bool audio::init()
