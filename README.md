@@ -164,6 +164,9 @@ Libraries:
   <img src="photos/display-esp-wiring.jpg" alt="ESP32 to e-ink display wiring" width="320">
   <img src="photos/dispalay_plugged_in.jpg" alt="Display plugged in" width="320">
 </p>
+<p align="center">
+  <img src="photos/speaker_connection.jpg" alt="Speaker connection (spaghetti monster has been created)" width="320">
+</p>
 
 ### Display & GUI
 
@@ -202,8 +205,6 @@ Libraries:
   <img src="photos/4th_fron_panel-front.jpg" alt="Front panel - front" width="320">
   <img src="photos/4th_front_panel-back.jpg" alt="Front panel - back" width="320">
 </p>
-
-<!-- TODO: Add beauty shots once IMG_5243/5245/5247/5249/5251.HEIC are converted to .jpg/.png -->
 
 
 ## Repository Structure
