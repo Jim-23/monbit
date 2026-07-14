@@ -128,3 +128,9 @@ BUTTON RELEASED
 - you can hear one beep sound when you power the device
 ![Speaker connection + spaghetti monster](photos/speaker_connection.jpg)
 
+
+### v0.0.5 (14.07.2026)
+- I have decided to switch to a new ESP32 module, the ESP32-S3 mostly because of more GPIO pins which I will need for accelerometer. 
+  - Currently waiting for the module to arrive (approx. 2 weeks)
+
+# UI and Menu System

@@ -41,6 +41,13 @@ namespace ui
     constexpr char VERSION[] = "v0.0.4";
 }
 
+struct MenuEntry
+{
+    const char* text;
+    Screen destination;
+    void (*action)(Monster&);
+};
+
 // TODO: replace ASCII monster with sprite
 
 void draw_borders()
@@ -120,13 +127,79 @@ void draw_footer()
     display.print(">");
 }
 
-void draw_screen(const Monster& monster)
+void draw_screen(const Monster& monster, Screen screen, int selected_menu)
 {
     display.fillScreen(GxEPD_WHITE);
+    switch (screen)
+    {
+        case Screen::Home:
+            draw_home(monster);
+            break;
+
+        case Screen::Menu:
+            draw_menu(selected_menu);
+            break;
+
+        case Screen::Stats:
+            draw_stats(monster);
+            break;
+
+        case Screen::Settings:
+            draw_settings();
+            break;
+        
+        case Screen::About:
+            draw_about();
+            break;
+    }
+
+    
+}
+
+void draw_menu(int selected_menu)
+{
+    draw_header();
+
+    int y = 50;
+
+    for (size_t i = 0; i < sizeof(MENU) / sizeof(MenuEntry); i++)
+    {
+        display.setCursor(20, y);
+
+        if ((int)i == selected_menu)
+            display.print("> ");
+        else
+            display.print("  ");
+
+        display.println(MENU[i].text);
+
+        y += 20;
+    }
+}
+
+void draw_home(const Monster& monster){
 
     draw_borders();
     draw_header();
     draw_monster();
     draw_stats(monster);
     draw_footer();
+}
+
+void draw_settings(){
+
+}
+
+void draw_about()
+{
+    draw_header();
+
+    display.setCursor(20, 60);
+    display.println("Monbit");
+
+    display.setCursor(20, 85);
+    display.println("Version 0.0.5");
+
+    display.setCursor(20, 110);
+    display.println("ESP32-C3");
 }

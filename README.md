@@ -41,10 +41,11 @@ Current Version: `v0.0.4` (2026-07-13)
 - [x] Automatic monster tick system
 - [x] Persistent storage (save/load)
 - [x] Audio subsystem
+- [ ] Menu system
 - [ ] Battery management
 - [ ] Deep sleep
 - [ ] Sprite rendering
-- [ ] Menu system
+
 
 ### Hardware
 - [x] Components selected
@@ -67,6 +68,8 @@ Current Version: `v0.0.4` (2026-07-13)
 - [x] Monster actions
 - [x] Time-based stat changes
 - [x] Beep when button is pressed
+- [ ] Naming the monster
+- [ ] Monster sprite and animations
 - [ ] Monster emotions
 - [ ] Growth/aging system
 - [ ] Evolution
@@ -126,14 +129,14 @@ Completed:
 
 Core components:
 
-- ESP32-C3 SuperMini
+- ESP32-C3 SuperMini ?
 - WeAct 1.54" E-Ink Display
 - 500mAh LiPo Battery
-- TP4056 USB-C Charging Module
+- TP4056 USB-C Charging Module ?
 
 - Tactile Buttons
 - MAX98357A Audio Amplifier
-- Mini Speaker
+- Speaker
 - MPU6050 Accelerometer
 
 
@@ -149,6 +152,8 @@ Development environment:
 Libraries:
 
 - GxEPD2
+- FreeMonoBold0pt7bt
+- i2s
 
 
 ## Gallery

@@ -96,7 +96,21 @@ Example:
 **Status:** Completed
 
 ---
-## 0.0.5 — Battery integration
+
+## 0.0.5 — UI and Menu System
+
+### Goal
+* Create a simple menu system
+* Interactive menu
+* Better layout and UX
+
+### Done When
+* Menu is displayed on the screen
+* Menu can be navigated with buttons
+* Buttons are changed to Left Middle Right
+
+---
+## 0.0.6 — Battery integration
 
 ### Goal
 * The battery powers the device
@@ -117,7 +131,7 @@ Example:
 
 ---
 
-## 0.0.6 — Power Optimization 
+## 0.0.7 — Power Optimization 
 
 ### Goal
 
@@ -131,7 +145,7 @@ Example:
 * Button wakes the device
 
 ---
-## 0.0.7 — Accelerometer Integration
+## 0.0.8 — Accelerometer Integration
 
 ### Goal
 * Detect device orientation
@@ -146,11 +160,10 @@ Example:
 
 ---
 
-## 0.0.8 — UI & Animation
+## 0.0.9 — UI & Animation
 
 ### Goal
 
-* Improve screen layout
 * Draw monster sprite
 * Add simple animations
 
@@ -162,7 +175,7 @@ Example:
   
 ---
 
-## 0.0.9 — First real monster
+## 0.0.10 — First real monster
 
 ### Goal
 
@@ -177,7 +190,7 @@ Example:
 
 ---
 
-## 0.0.10 — Hardware Assembly
+## 0.0.11 — Hardware Assembly
 
 ### Goal
 
@@ -185,7 +198,7 @@ Example:
 
 
 ---
-## 0.0.11 — Enclosure
+## 0.0.12 — Enclosure
 
 ### Goal
 * 3D printed enclosure back and front
