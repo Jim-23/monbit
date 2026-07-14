@@ -19,6 +19,8 @@
 * Serial output works
 * Display shows text or image
 
+**Status:** Completed
+
 ---
 
 ## 0.0.2 — Input System
@@ -28,19 +30,30 @@
 * Wire buttons
 * Wire power switch
 * Detect button presses
+* When button pressed, do something to monster (feed it for example)
+
+Example Stats
+
+* Hunger
+* Fun
+* Energy
 
 ### Hardware
 
-* SKRGAED010 ALPS Tact Switch (or similar)
+* SKRGAED010 ALPS Tact Switch
 
 ### Done When
+* Basic monster stats
+* Simple interactions
+  
+* Buttons modify stats
+* Display updates values
 
-* Buttons log presses + does something to monster (feeds it for example)
-* Switch turns device on/off
+**Status:** Completed
 
 ---
 
-## 0.0.3 — Memory System
+## 0.0.3 — Basic monster + Memory System
 
 ### Goal:
 
@@ -59,6 +72,8 @@ Example:
 * Fun
 * Energy
 
+**Status:** Completed
+
 ---
 
 ## 0.0.4 — Sound System
@@ -75,24 +90,40 @@ Example:
 
 ### Done When
 
-* The device plays a beep sound
+* The device plays a beep sound upon boot
 * Sound triggered by button press
+
+**Status:** Completed
+
+---
+## 0.0.5 — Battery integration
+
+### Goal
+* The battery powers the device
+* Device can charge via USB-C
+* Device can run on battery power
+
+### Hardware
+* Li-Po Battery 503035 500mAh 3.7V JST-PH 2.0
+* USB-C TP4056 Lithium Battery Charger Module
+
+### Done When
+* Integrate Li-Po battery
+* Integrate charging circuit
+* Read battery voltage
+* Display battery level
+
+**Status:** Work in Progress
 
 ---
 
-## 0.0.5 — Battery + Power Optimization 
+## 0.0.6 — Power Optimization 
 
 ### Goal
 
 * Deep sleep support
 * Wake on button press
-* The battery powers the device
-* Device can charge via USB-C
-* Battery optimization
-
-### Hardware
-* Li-Po Battery 503035 500mAh 3.7V JST-PH 2.0
-* USB-C TP4056 Lithium Battery Charger Module
+* Switch to turn device on/off
 
 ### Done When
 
@@ -100,39 +131,73 @@ Example:
 * Button wakes the device
 
 ---
-
-## 0.0.6 — First Monster Logic
+## 0.0.7 — Accelerometer Integration
 
 ### Goal
+* Detect device orientation
+* Detect device movement
 
-* Basic monster stats
-* Simple interactions
-
-Example Stats
-
-* Hunger
-* Fun
-* Energy
-
+### Hardware
+* MPU6050 Accelerometer
+  
 ### Done When
-
-* Buttons modify stats
-* Display updates values
+* Device detects orientation changes
+* When device is moved, it reacts (e.g., wakes up, changes state, etc.)
 
 ---
 
-## 0.0.7 — UI Improvements
+## 0.0.8 — UI & Animation
 
 ### Goal
 
-* Basic UI layout
-* Icons and sprites
-* Monster display
+* Improve screen layout
+* Draw monster sprite
+* Add simple animations
 
 ### Done When
 
-* UI readable
-* Monster visible
+* Monster is animated
+* Status icons are displayed
+* UI resembles the final design
+  
+---
+
+## 0.0.9 — First real monster
+
+### Goal
+
+* Monster has a name
+* Monster has a personality
+* Monster has a unique appearance
+
+### Done When
+
+* Specific monster displays on the screen
+* Monster sprite is loaded
+
+---
+
+## 0.0.10 — Hardware Assembly
+
+### Goal
+
+* All components are wired together and works without breadboard
+
+
+---
+## 0.0.11 — Enclosure
+
+### Goal
+* 3D printed enclosure back and front
+* Enclosure holds all components
+* Enclosure has holes for buttons, display, and speaker
+
+### Done When
+* All components fit inside the enclosure
+* Buttons are accessible
+* Display is securely mounted
+* USB-C port is accessible
+* Speaker opening is present
 
 ---
 

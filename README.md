@@ -26,7 +26,7 @@ I want to document the entire journey, sharing both successes and failures, to c
 
 ## Current Progress
 
-Current Version: `v0.0.3` (2026-06-28)
+Current Version: `v0.0.4` (2026-07-13)
 
 ### Firmware
 - [x] ESP32 bring-up
@@ -51,21 +51,22 @@ Current Version: `v0.0.3` (2026-06-28)
 - [x] ESP32 tested
 - [x] E-Ink display tested
 - [x] Buttons tested (breadboard)
-- [x] First enclosure front prototype designed
+- [x] First enclosure front prototype designed (front lid, far from final)
 - [x] Audio amplifier connected
 - [x] Speaker connected
 - [ ] Battery integrated
 - [ ] Charging module integrated
 - [ ] Power switch integrated
+- [ ] Accelerometer integrated
 - [ ] Permanent wiring
 - [ ] First fully assembled prototype
-- [ ] Final enclosure
+- [ ] Final enclosure designed
 
 ### Gameplay
 - [x] Basic monster stats
 - [x] Monster actions
 - [x] Time-based stat changes
-- [ ] Beep when button is pressed
+- [x] Beep when button is pressed
 - [ ] Monster emotions
 - [ ] Growth/aging system
 - [ ] Evolution
@@ -112,6 +113,12 @@ Completed:
 - Every tick (currently 10 seconds), the hunger, fun and energy are changed by 1
 - Every time the button is pressed, the current state of the Monster is saved to Flash
 - When rebooted, the data is loaded
+
+### v0.0.4 - Audio
+
+Completed:
+- Audio subsystem added
+- Beep when button is pressed
 
 
 

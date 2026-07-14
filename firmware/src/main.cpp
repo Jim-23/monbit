@@ -95,18 +95,21 @@ void loop()
     {
         case Button::Left:
             monster.feed();
+            audio::play_feed();
             save_monster(monster);
             needs_refresh = true;
             break;
 
         case Button::Middle:
             monster.play();
+            audio::play_play()
             save_monster(monster);
             needs_refresh = true;
             break;
 
         case Button::Right:
             monster.sleep();
+            audio::play_sleep();
             save_monster(monster);
             needs_refresh = true;
             break;

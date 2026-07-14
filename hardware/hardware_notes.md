@@ -1,5 +1,31 @@
 # ESP32-C3 SuperMini
 
+## ESP board pinout
+![ESP32-C3 SuperMini pinout](photos/esp32-c3_supermini_pinout.png)
+
+| Pin | Describtion | Connection |
+|-----|-------------|------------|
+| 5V | 5V  | - |
+| G | GND | Ground |
+| 3V3 | 3.3V | Power |
+| 4 | GPIO4 | Display DC |
+| 3 | GPIO3 | Display RES |
+| 2 | GPIO2 | Display BUSY |
+| 1 | GPIO1 | Audio BCLK |
+| 0 | GPIO0 | Audio DIN |
+| 5 | GPIO5 | Display CS |
+| 6 | GPIO6 | Display SCL |
+| 7 | GPIO7 | Display SDA |
+| 8 | GPIO8 | Left Button |
+| 9 | GPIO9 | Middle Button |
+| 10 | GPIO10 | Right Button |
+| 20 | GPIO20 | Audio LRC (WS) |
+| 21 | GPIO21 | - |
+
+
+
+
+
 ## Upload
 
 Board:
@@ -12,12 +38,12 @@ USB:
 Works on macOS with data-capable USB-C cable
 
 ## Buttons - care for monster
-| Pin | activity |
-|------------|----------|
-| 8   | LEFT  |
-| 9   | MIDDLE  |
-| 10   | RIGHT  |
-| 9   | -  |
+| Button | ESP32-C3 |
+|---------|----------|
+| Left | GPIO8 |
+| Middle | GPIO9 |
+| Right | GPIO10 |
+| Other Pin | GND |
 
 
 ## Display
@@ -47,11 +73,11 @@ build_flags =
 
 Driver:
 
-GxEPD2_154_GDEY0154D67
+- GxEPD2_154_GDEY0154D67
 
 SPI:
 
-SPI.begin(6, -1, 7, 5);
+- SPI.begin(6, -1, 7, 5);
 
 
 ### Audio wiring to ESP
