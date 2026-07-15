@@ -41,11 +41,13 @@ namespace ui
     constexpr char VERSION[] = "v0.0.4";
 }
 
-struct MenuEntry
-{
-    const char* text;
-    Screen destination;
-    void (*action)(Monster&);
+static const MenuEntry MENU[] = {
+    { "Feed",     Screen::Home },
+    { "Play",     Screen::Home },
+    { "Sleep",    Screen::Home },
+    { "Stats",    Screen::Stats },
+    { "Settings", Screen::Settings },
+    { "About",    Screen::About },
 };
 
 // TODO: replace ASCII monster with sprite
