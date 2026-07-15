@@ -215,6 +215,7 @@ monbit/
 │   ├── include/
 │   ├── lib/
 │   ├── src/
+|   |   ├── debug/ # code used for debugging and testing
 │   ├── test/
 │   └── platformio.ini
 ├── hardware/     # Hardware notes & measurements
