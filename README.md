@@ -41,7 +41,7 @@ Current Version: `v0.0.4` (2026-07-13)
 - [x] Automatic monster tick system
 - [x] Persistent storage (save/load)
 - [x] Audio subsystem
-- [ ] Menu system
+- [x] Menu system
 - [ ] Battery management
 - [ ] Deep sleep
 - [ ] Sprite rendering
@@ -67,7 +67,7 @@ Current Version: `v0.0.4` (2026-07-13)
 - [x] Basic monster stats
 - [x] Monster actions
 - [x] Time-based stat changes
-- [x] Beep when button is pressed
+- [x] Beep when action is done
 - [ ] Naming the monster
 - [ ] Monster sprite and animations
 - [ ] Monster emotions
@@ -176,6 +176,9 @@ Libraries:
 </p>
 <p align="center">
   <img src="photos/gui_update_0.jpg" alt="GUI update" width="320">
+</p>
+<p align="center">
+  <img src="photos/menu_selection_v0.jpg" alt="Menu" wirdth="320">
 </p>
 
 ### Buttons
