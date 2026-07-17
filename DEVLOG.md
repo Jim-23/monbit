@@ -133,4 +133,7 @@ BUTTON RELEASED
 - I have decided to switch to a new ESP32 module, the ESP32-S3 mostly because of more GPIO pins which I will need for accelerometer. 
   - Currently waiting for the module to arrive (approx. 2 weeks)
 
-# UI and Menu System
+#### UI and Menu System
+- added basic menu when middle button is pressed
+- user can navigate using left button, right button and middle button to confirm
+![What's on menu for today?](photos/menu_selection_v0.jpg)
