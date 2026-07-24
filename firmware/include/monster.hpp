@@ -44,6 +44,10 @@ struct Monster
 
     uint16_t ticks_since_interaction = 0;
 
+    Status status = Status::None;
+
+    void create_random_species();
+
     bool feed();
     bool play();
     bool sleep();
@@ -55,7 +59,7 @@ struct Monster
     Mood get_mood() const;
     Status get_status() const;
 
-    Status status = Status::None;
+    
 
     void set_status(Status new_status);
     void clear_status();

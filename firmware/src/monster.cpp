@@ -1,4 +1,6 @@
 
+#include <cstring>
+
 #include "monster.hpp"
 
 // TODO consider renaming hunger to something else, its confusing tah H is bad when 100 but others are good
@@ -102,6 +104,26 @@ bool Monster::sleep()
 const Species& Monster::get_species() const
 {
     return ::get_species(species);
+}
+
+void Monster::create_random_species()
+{
+    const Species& random_species = get_random_species();
+
+    species = random_species.id;
+
+    const char* random_name = get_random_name(random_species);
+
+    std::strncpy(name, random_name, sizeof(name) - 1);
+    name[sizeof(name) - 1] = '\0';
+
+    hunger = 0;
+    fun = 100;
+    energy = 100;
+    age = 0;
+
+    ticks_since_interaction = 0;
+    status = Status::None;
 }
 
 // === TICKS ===

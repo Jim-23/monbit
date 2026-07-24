@@ -19,7 +19,7 @@ void save_monster(const Monster& monster)
     preferences.end();
 }
 
-void load_monster(Monster& monster)
+bool load_monster(Monster& monster)
 {
     preferences.begin("monbit", true);
 

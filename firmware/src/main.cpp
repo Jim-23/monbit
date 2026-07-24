@@ -256,7 +256,11 @@ void setup()
         Serial.println("Audio initialization failed");
     }
 
-    load_monster(monster);
+    if (!load_monster(monster))
+    {
+        monster.create_random();
+        save_monster(monster);
+    }
 
     change_screen(Screen::Home);
     refresh_display(RefreshMode::Full);
