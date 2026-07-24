@@ -48,6 +48,25 @@ namespace ui
 
 }
 
+namespace sprite
+{
+    constexpr const char* HAPPY = "<(^‿^)>";
+    constexpr const char* NORMAL = "<(^.^)>";
+    constexpr const char* HUNGRY = "<(u_u)>";
+    constexpr const char* TIRED = "<(=_=)>";
+    constexpr const char* BORED = "<(-_-)>";
+    constexpr const char* SAD = "<(._.)>";
+    constexpr const char* CRITICAL = "<(T_T)>";
+
+    constexpr const char* PLAYING = "<(^o^)>";
+    constexpr const char* EATING = "<(^-^)>";
+    constexpr const char* SLEEPING = "<(-.-) zZ";
+    constexpr const char* DIZZY = "<(@_@)>";
+    constexpr const char* SICK = "<(x_x)>";
+    constexpr const char* INJURED = "<(>_<)>";
+    constexpr const char* DEAD = "<(+_+)>";
+}
+
 static const MenuEntry MENU[] = 
 {
     { "Feed",     Screen::Home },
@@ -122,10 +141,76 @@ void draw_ok_button()
 
 // == MONSTER ==
 
-void draw_monster()
+void draw_monster(const Monster& monster)
 {
     display.setCursor(ui::MONSTER_X, ui::MONSTER_Y);
-    display.print("<(o_o)>");
+
+    switch (monster.get_status())
+    {
+        case Status::Playing:
+            display.print(sprite::PLAYING);
+            return;
+
+        // TODO add in the future draw_sprite(Sprite::Eating);
+
+        case Status::Eating:
+            display.print(sprite::EATING);
+            return;
+
+        case Status::Sleeping:
+            display.print(sprite::SLEEPING);
+            return;
+
+        case Status::Dizzy:
+            display.print(sprite::DIZZY);
+            return;
+
+        case Status::Sick:
+            display.print(sprite::SICK);
+            return;
+
+        case Status::Injured:
+            display.print(sprite::INJURED);
+            return;
+
+        case Status::Dead:
+            display.print(sprite::DEAD);
+            return;
+
+        case Status::None:
+            break;
+    }
+
+    switch (monster.get_mood())
+    {
+        case Mood::Happy:
+            display.print(sprite::HAPPY);
+            break;
+
+        case Mood::Hungry:
+            display.print(sprite::HUNGRY);
+            break;
+
+        case Mood::Tired:
+            display.print(sprite::TIRED);
+            break;
+
+        case Mood::Bored:
+            display.print(sprite::BORED);
+            break;
+
+        case Mood::Sad:
+            display.print(sprite::SAD);
+            break;
+
+        case Mood::Critical:
+            display.print(sprite::CRITICAL);
+            break;
+
+        case Mood::Normal:
+            display.print(sprite::NORMAL);
+            break;
+    }
 }
 
 // == STATS ==
@@ -182,7 +267,7 @@ void draw_home_screen(const Monster& monster)
 
     draw_borders();
     draw_header();
-    draw_monster();
+    draw_monster(monster);
     draw_home_stats(monster);
     draw_footer();
 }

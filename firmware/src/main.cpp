@@ -108,23 +108,32 @@ void execute_selected_menu()
     switch (selected_menu)
     {
         case MENU_FEED:
-            monster.feed();
-            audio::play_feed();
-            save_monster(monster);
+            if (monster.feed())
+            {
+                audio::play_feed();
+                save_monster(monster);
+            }
+
             change_screen(Screen::Home);
             break;
 
         case MENU_PLAY:
-            monster.play();
-            audio::play_play();
-            save_monster(monster);
+            if (monster.play())
+            {
+                audio::play_play();
+                save_monster(monster);
+            }
+
             change_screen(Screen::Home);
             break;
 
         case MENU_SLEEP:
-            monster.sleep();
-            audio::play_sleep();
-            save_monster(monster);
+            if (monster.sleep())
+            {
+                audio::play_sleep();
+                save_monster(monster);
+            }
+
             change_screen(Screen::Home);
             break;
 

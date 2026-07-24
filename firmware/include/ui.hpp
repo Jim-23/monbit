@@ -32,7 +32,7 @@ void draw_ok_button();
 
 
 
-void draw_monster();
+void draw_monster(const Monster& monster);
 void draw_home_stats(const Monster& monster);
 
 

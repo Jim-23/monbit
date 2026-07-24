@@ -117,7 +117,7 @@ Example:
 * Monster logic is implemented and the monster reacts to user actions
 
 ---
-## 0.0.6 — Battery integration
+## 0.0.7 — Battery integration
 
 ### Goal
 * The battery powers the device
@@ -138,7 +138,7 @@ Example:
 
 ---
 
-## 0.0.7 — Power Optimization 
+## 0.0.8 — Power Optimization 
 
 ### Goal
 
@@ -152,7 +152,7 @@ Example:
 * Button wakes the device
 
 ---
-## 0.0.8 — Accelerometer Integration
+## 0.0.9 — Accelerometer Integration
 
 ### Goal
 * Detect device orientation
@@ -167,11 +167,11 @@ Example:
 
 ---
 
-## 0.0.9 — UI & Animation
+## 0.0.10 — UI & Animation
 
 ### Goal
 
-* Draw monster sprite
+* Draw monster sprites
 * Add simple animations
 
 ### Done When
@@ -182,7 +182,7 @@ Example:
   
 ---
 
-## 0.0.10 — First real monster
+## 0.0.11 — First real monster
 
 ### Goal
 
@@ -197,7 +197,7 @@ Example:
 
 ---
 
-## 0.0.11 — Hardware Assembly
+## 0.0.12 — Hardware Assembly
 
 ### Goal
 
@@ -205,7 +205,7 @@ Example:
 
 
 ---
-## 0.0.12 — Enclosure
+## 0.0.13 — Enclosure
 
 ### Goal
 * 3D printed enclosure back and front
