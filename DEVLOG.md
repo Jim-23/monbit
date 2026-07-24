@@ -142,3 +142,30 @@ BUTTON RELEASED
 - I have added more polished menu system and made the code more readable and organized
 - Settings are still mock, but I will implement them later - the user should be able to turn off the sound and change Monster name
 - Next focus is monster logic
+
+### v0.0.6 (24.07.2026)
+- I have added basic monster logic, the monster has different states and moods
+- There are few different options
+- States:
+  - None,
+  - Playing,
+  - Eating,
+  - Sleeping,
+  - Dizzy,
+  - Sick,
+  - Injured,
+  - Dead,
+- Moods:
+  - Happy,
+  - Normal,
+  - Hungry,
+  - Tired,
+  - Bored,
+  - Sad,
+  - Critical
+- Currently it needs to be tested, but not all of them are implemented, for example Dizzy logic will be added when accelerometer is added
+
+#### Update
+- I am trying to add species, starting with slime, Blob 
+
+

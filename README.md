@@ -71,7 +71,7 @@ Current Version: `v0.0.4` (2026-07-13)
 - [x] Beep when action is done
 - [ ] Naming the monster
 - [ ] Monster sprite and animations
-- [ ] Monster emotions
+- [x] Monster moods and states
 - [ ] Growth/aging system
 - [ ] Evolution
 - [ ] Random events
@@ -132,6 +132,11 @@ Completed:
 - So far only mock settings are available in the menu (no actual functionality yet)
 
 
+### v0.0.6 - Monster Logic
+
+Completed:
+- Moods and states were added
+- Different monster visuals for the specific state/mood
 
 ## Hardware
 

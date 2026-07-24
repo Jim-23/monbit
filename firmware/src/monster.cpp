@@ -98,6 +98,12 @@ bool Monster::sleep()
 }
 
 
+// === SPECIES ===
+const Species& Monster::get_species() const
+{
+    return ::get_species(species);
+}
+
 // === TICKS ===
 void Monster::tick()
 {

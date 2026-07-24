@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+#include "species.hpp"
+
 
 enum class Mood
 {
@@ -31,6 +33,10 @@ enum class Status
 
 struct Monster
 {
+    SpeciesId species = SpeciesId::Slime;
+
+    char name[16] = "Blob";
+
     uint8_t hunger = 0;
     uint8_t fun = 100;
     uint8_t energy = 100;
@@ -55,5 +61,7 @@ struct Monster
     void clear_status();
     bool has_status(Status expected_status) const;
     bool is_activity() const;
+
+    const Species& get_species() const;
 };
 

@@ -113,8 +113,9 @@ Example:
 
 ### Goal
 * Monster has a name
-* Monster has a personality
+* Monster has a personality, moods and states
 * Monster logic is implemented and the monster reacts to user actions
+* Monster changes whhen mood/state changes
 
 ---
 ## 0.0.7 — Battery integration
