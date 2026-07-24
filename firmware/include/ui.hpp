@@ -24,17 +24,26 @@ constexpr int MENU_STATS = 3;
 constexpr int MENU_SETTINGS = 4;
 constexpr int MENU_ABOUT = 5;
 
+// GUI
+void draw_borders();
 void draw_header();
-void draw_monster();
-void draw_stats(const Monster& monster);
 void draw_footer();
+void draw_ok_button();
 
-void draw_home(const Monster& monster);
-void draw_menu(int selected_menu);
-void draw_settings();
-void draw_about();
 
+
+void draw_monster();
+void draw_home_stats(const Monster& monster);
+
+
+// SCREEN
+void draw_home_screen(const Monster& monster);
+void draw_menu_screen(int selected_menu);
+void draw_stats_screen(const Monster& monster);
+void draw_settings_screen();
+void draw_about_screen();
 void draw_screen(
     const Monster& monster,
     Screen screen,
-    int selected_menu);
+    int selected_menu
+);

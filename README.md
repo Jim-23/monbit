@@ -42,6 +42,7 @@ Current Version: `v0.0.4` (2026-07-13)
 - [x] Persistent storage (save/load)
 - [x] Audio subsystem
 - [x] Menu system
+- [ ] Monster logic (name, personality, reactions)
 - [ ] Battery management
 - [ ] Deep sleep
 - [ ] Sprite rendering
@@ -122,6 +123,13 @@ Completed:
 Completed:
 - Audio subsystem added
 - Beep when button is pressed
+
+### v0.0.5 - Menu
+
+Completed:
+- Menu system added
+- Menu can be navigated with the buttons
+- So far only mock settings are available in the menu (no actual functionality yet)
 
 
 

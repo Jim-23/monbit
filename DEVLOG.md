@@ -137,3 +137,8 @@ BUTTON RELEASED
 - added basic menu when middle button is pressed
 - user can navigate using left button, right button and middle button to confirm
 ![What's on menu for today?](photos/menu_selection_v0.jpg)
+
+#### Update (24.07.2026)
+- I have added more polished menu system and made the code more readable and organized
+- Settings are still mock, but I will implement them later - the user should be able to turn off the sound and change Monster name
+- Next focus is monster logic

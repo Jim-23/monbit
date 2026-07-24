@@ -12,6 +12,7 @@ namespace ui
     constexpr int SCREEN_HEIGHT = 200;
 
     constexpr int MARGIN = 10;
+    constexpr int LEFT_MARGIN = 20;
 
     // Header
     constexpr int HEADER_Y = 18;
@@ -22,7 +23,11 @@ namespace ui
     constexpr int MONSTER_Y = 80;
 
     // Stats area
-    constexpr int STATS_LINE_Y = 135;
+    constexpr int SCREEN_TITLE_Y = 55;
+    constexpr int LINE1_Y = 85;
+    constexpr int LINE2_Y = 110;
+    constexpr int LINE3_Y = 135;
+    constexpr int LINE4_Y = 160;
 
     constexpr int LEFT_STATS_X = 15;
     constexpr int RIGHT_STATS_X = 115;
@@ -38,10 +43,13 @@ namespace ui
     constexpr int FOOTER_CENTER_X = 96;
     constexpr int FOOTER_RIGHT_X = 165;
 
-    constexpr char VERSION[] = "v0.0.4";
+    constexpr char VERSION[] = "v0.0.5";
+    constexpr char NAME[] = "Blob";
+
 }
 
-static const MenuEntry MENU[] = {
+static const MenuEntry MENU[] = 
+{
     { "Feed",     Screen::Home },
     { "Play",     Screen::Home },
     { "Sleep",    Screen::Home },
@@ -50,7 +58,7 @@ static const MenuEntry MENU[] = {
     { "About",    Screen::About },
 };
 
-// TODO: replace ASCII monster with sprite
+//== GUI ==
 
 void draw_borders()
 {
@@ -64,9 +72,9 @@ void draw_borders()
 
     display.drawLine(
         0,
-        ui::STATS_LINE_Y,
+        ui::LINE3_Y,
         ui::SCREEN_WIDTH,
-        ui::STATS_LINE_Y,
+        ui::LINE3_Y,
         GxEPD_BLACK
     );
 
@@ -85,30 +93,7 @@ void draw_header()
     display.setTextColor(GxEPD_BLACK);
 
     display.setCursor(ui::MARGIN, ui::HEADER_Y);
-    display.printf("MONBIT %s", ui::VERSION);
-}
-
-void draw_monster()
-{
-    display.setCursor(ui::MONSTER_X, ui::MONSTER_Y);
-    display.print("<(o_o)>");
-}
-
-void draw_stats(const Monster& monster)
-{
-    // left column
-    display.setCursor(ui::LEFT_STATS_X, ui::STATS_FIRST_ROW_Y);
-    display.printf("H:%d", monster.hunger);
-
-    display.setCursor(ui::LEFT_STATS_X, ui::STATS_SECOND_ROW_Y);
-    display.printf("E:%d", monster.energy);
-
-    // right column
-    display.setCursor(ui::RIGHT_STATS_X, ui::STATS_FIRST_ROW_Y);
-    display.printf("F:%d", monster.fun);
-
-    display.setCursor(ui::RIGHT_STATS_X, ui::STATS_SECOND_ROW_Y);
-    display.printf("A:%d", monster.age);
+    display.printf("%s", ui::NAME);
 }
 
 void draw_footer()
@@ -129,36 +114,80 @@ void draw_footer()
     display.print(">");
 }
 
+void draw_ok_button()
+{
+    display.setCursor(70, 195);
+    display.print("OK: Back");
+}
+
+// == MONSTER ==
+
+void draw_monster()
+{
+    display.setCursor(ui::MONSTER_X, ui::MONSTER_Y);
+    display.print("<(o_o)>");
+}
+
+// == STATS ==
+
+void draw_home_stats(const Monster& monster)
+{
+    // left column
+    display.setCursor(ui::LEFT_STATS_X, ui::STATS_FIRST_ROW_Y);
+    display.printf("H:%d", monster.hunger);
+
+    display.setCursor(ui::LEFT_STATS_X, ui::STATS_SECOND_ROW_Y);
+    display.printf("E:%d", monster.energy);
+
+    // right column
+    display.setCursor(ui::RIGHT_STATS_X, ui::STATS_FIRST_ROW_Y);
+    display.printf("F:%d", monster.fun);
+
+    display.setCursor(ui::RIGHT_STATS_X, ui::STATS_SECOND_ROW_Y);
+    display.printf("A:%d", monster.age);
+}
+
+
+// == SCREENS ==
+
 void draw_screen(const Monster& monster, Screen screen, int selected_menu)
 {
     display.fillScreen(GxEPD_WHITE);
     switch (screen)
     {
         case Screen::Home:
-            draw_home(monster);
+            draw_home_screen(monster);
             break;
 
         case Screen::Menu:
-            draw_menu(selected_menu);
+            draw_menu_screen(selected_menu);
             break;
 
         case Screen::Stats:
-            draw_stats(monster);
+            draw_stats_screen(monster);
             break;
 
         case Screen::Settings:
-            draw_settings();
+            draw_settings_screen();
             break;
         
         case Screen::About:
-            draw_about();
+            draw_about_screen();
             break;
     }
-
-    
 }
 
-void draw_menu(int selected_menu)
+void draw_home_screen(const Monster& monster)
+{
+
+    draw_borders();
+    draw_header();
+    draw_monster();
+    draw_home_stats(monster);
+    draw_footer();
+}
+
+void draw_menu_screen(int selected_menu)
 {
     draw_header();
 
@@ -166,42 +195,76 @@ void draw_menu(int selected_menu)
 
     for (size_t i = 0; i < sizeof(MENU) / sizeof(MenuEntry); i++)
     {
-        display.setCursor(20, y);
+        display.setCursor(ui::LEFT_MARGIN, y);
 
         if ((int)i == selected_menu)
             display.print("> ");
         else
             display.print("  ");
 
-        display.println(MENU[i].text);
+        display.print(MENU[i].text);
 
         y += 20;
     }
 }
 
-void draw_home(const Monster& monster){
-
-    draw_borders();
-    draw_header();
-    draw_monster();
-    draw_stats(monster);
-    draw_footer();
-}
-
-void draw_settings(){
-
-}
-
-void draw_about()
+void draw_stats_screen(const Monster& monster) 
 {
     draw_header();
 
-    display.setCursor(20, 60);
-    display.println("Monbit");
+    display.setCursor(ui::LEFT_MARGIN, ui::SCREEN_TITLE_Y);
+    display.print("STATS");
 
-    display.setCursor(20, 85);
-    display.println("Version 0.0.5");
+    display.setCursor(ui::LEFT_MARGIN, ui::LINE1_Y);
+    display.printf("Hunger: %d", monster.hunger);
 
-    display.setCursor(20, 110);
-    display.println("ESP32-C3");
+    display.setCursor(ui::LEFT_MARGIN, ui::LINE2_Y);
+    display.printf("Fun: %d", monster.fun);
+
+    display.setCursor(ui::LEFT_MARGIN, ui::LINE3_Y);
+    display.printf("Energy: %d", monster.energy);
+
+    display.setCursor(ui::LEFT_MARGIN, ui::LINE4_Y);
+    display.printf("Age: %d", monster.age);
+
+    draw_ok_button();
+}
+
+void draw_settings_screen()
+{
+    // TODO make settings funtional
+    draw_header();
+
+    display.setCursor(ui::LEFT_MARGIN, ui::SCREEN_TITLE_Y);
+    display.print("SETTINGS");
+
+    display.setCursor(ui::LEFT_MARGIN, ui::LINE1_Y);
+    display.print("Sound: ON");
+
+    display.setCursor(ui::LEFT_MARGIN, ui::LINE2_Y);
+    display.print("Change name");
+
+    display.setCursor(ui::LEFT_MARGIN, ui::LINE3_Y);
+    display.print("More soon");
+
+    draw_ok_button();
+}
+
+void draw_about_screen()
+{
+    draw_header();
+
+    display.setCursor(ui::LEFT_MARGIN, ui::SCREEN_TITLE_Y);
+    display.print("ABOUT");
+
+    display.setCursor(ui::LEFT_MARGIN, ui::LINE1_Y);
+    display.print("Monbit");
+
+    display.setCursor(ui::LEFT_MARGIN, ui::LINE2_Y);
+    display.printf("Version %s", ui::VERSION);
+
+    display.setCursor(ui::LEFT_MARGIN, ui::LINE3_Y);
+    display.print("ESP32-C3");
+
+    draw_ok_button();
 }

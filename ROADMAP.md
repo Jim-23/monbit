@@ -109,6 +109,13 @@ Example:
 * Menu can be navigated with buttons
 * Buttons are changed to Left Middle Right
 
+## 0.0.6 — Monster Logic
+
+### Goal
+* Monster has a name
+* Monster has a personality
+* Monster logic is implemented and the monster reacts to user actions
+
 ---
 ## 0.0.6 — Battery integration
 
